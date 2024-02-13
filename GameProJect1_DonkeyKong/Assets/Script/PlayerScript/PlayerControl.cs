@@ -202,7 +202,7 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
     {
         if(isDead)
             inputCon.releaseController();
-        else inputCon.gainController();
+        //else inputCon.gainController();
     }
 
     public void des(bool destroy)
@@ -255,6 +255,8 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
     public void takeDamage()
     {
         GameManager.instance._LP--;
+        //player dead play animation wait and re scene
+        isDead = true;
     }
 
 

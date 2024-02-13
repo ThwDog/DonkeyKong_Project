@@ -12,7 +12,6 @@ public class BarrelRollType : MonoBehaviour
     bool playerAbove = false;
     [Header("Setting")]
     public bool hitPlayer = false;
-    [SerializeField] LayerMask ignorelayer;
     private Collider[] ladderCollider;
     private bool isLadderDown;
     private bool canRnd = true;
@@ -39,7 +38,6 @@ public class BarrelRollType : MonoBehaviour
         {
             if(obj.transform.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Above");
                 playerAbove = true;
             } 
         }    
@@ -47,10 +45,19 @@ public class BarrelRollType : MonoBehaviour
 
     public void _NormalRoll(float speed)
     {
+        Collider[] wall = FindObjectsOfType(typeof(Collider)) as Collider[];
+        foreach (Collider ignore in wall)
+        {
+            if(ignore.gameObject.layer == 10)
+            {
+                Physics.IgnoreCollision(_collider,ignore,playerAbove);
+            }
+        }
+
         Vector3 dir = hitColliderRight? Vector3.left : Vector3.right;
         float currentSpeed = hitPlayer || hitWall? 0 : speed;
-        //Debug.Log(currentSpeed);
-        Physics.IgnoreLayerCollision(9,10,playerAbove); 
+        //Physics.IgnoreLayerCollision(9,10,playerAbove); 
+
         rb.AddForce(dir * currentSpeed * Time.deltaTime,ForceMode.Impulse);
     }
 
@@ -64,14 +71,12 @@ public class BarrelRollType : MonoBehaviour
 
     public void _Opening(float speed)
     {
-        Physics.IgnoreLayerCollision(9,6);
         if(isBaseGround)
             rb.AddForce(Vector3.left * speed * Time.deltaTime,ForceMode.Impulse);
     }
 
     public void _CrossType(List<Transform> goDir,float speed)
     { 
-        Physics.IgnoreLayerCollision(9,6);
         if(rb.useGravity)
             rb.useGravity = false;
         if(transform.position == goDir[0].position)
@@ -110,10 +115,10 @@ public class BarrelRollType : MonoBehaviour
             switch(rnd)
             {
                 case 0:
-                    Debug.Log("0");
+                    //Debug.Log("0");
                     break;
                 case 1:
-                    Debug.Log("1");
+                    //Debug.Log("1");
                     if(ladderCollider[0].gameObject.transform.childCount > 0 && canClimbing && !isClimbing)
                     {    
                         isClimbing = true;
@@ -178,8 +183,8 @@ public class BarrelRollType : MonoBehaviour
             if(!hitPlayer)
             {
                 hitPlayer = true;
-                player.isDead = true;
                 Debug.Log("Rolling on Player");
+                //add animation and effect
                 player.takeDamage();
             }
         }

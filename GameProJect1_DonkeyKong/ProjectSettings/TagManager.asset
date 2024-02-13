@@ -10,6 +10,7 @@ TagManager:
   - Spring
   - Rivet
   - Elevator
+  - SetDir
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - BaseGround
   - Barrel
   - Wall
-  - 
+  - IgnoreFloor
   - 
   - 
   - 

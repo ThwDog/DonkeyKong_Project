@@ -9,7 +9,7 @@ public class SpawnPointScript : MonoBehaviour
         normal , enemy
     }
 
-    [SerializeField] GameObject spawned;
+    public GameObject spawned;
     [SerializeField] bool canMutiSpawn;
     public _spawnType spawnType;
 
@@ -32,11 +32,11 @@ public class SpawnPointScript : MonoBehaviour
         }
     }
 
-    public void spawnEnemy()
+    public virtual void spawnEnemy()
     {
         if(spawnType == _spawnType.enemy)
         {
-            
+            Debug.Log("Spawn Enemy");
         }
     }
 }

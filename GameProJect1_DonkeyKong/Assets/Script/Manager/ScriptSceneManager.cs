@@ -17,6 +17,7 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
 
     public scene _scene;
     private string nextScene;
+    private bool passLvlFour = false;
 
     public override void Awake() 
     { 
@@ -63,16 +64,37 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
         switch (currentScene)
         {
             case scene.one:
-                nextScene = "02";
+                if(GameManager.instance.difficulty == GameManager.diff.one)//diff is one
+                    nextScene = "04";
+                if(GameManager.instance.difficulty == GameManager.diff.two)//diff is two
+                    nextScene = "02";
+                if(GameManager.instance.difficulty == GameManager.diff.three)//diff is three
+                    nextScene = "03";
+                if(GameManager.instance.difficulty == GameManager.diff.four && !passLvlFour)//diff is four
+                    nextScene = "03";
+                else if(GameManager.instance.difficulty == GameManager.diff.four && passLvlFour) 
+                    nextScene = "02";
                 break;
             case scene.two:
-                nextScene = "03";
+                if(GameManager.instance.difficulty == GameManager.diff.two)//diff is two
+                    nextScene = "04";
+                if(GameManager.instance.difficulty == GameManager.diff.three)//diff is three
+                    nextScene = "04";
+                if(GameManager.instance.difficulty == GameManager.diff.four)//diff is four
+                    nextScene = "04";
                 break;
             case scene.three:
-                nextScene = "04";
+                if(GameManager.instance.difficulty == GameManager.diff.three)//diff is three
+                    nextScene = "02";
+                if(GameManager.instance.difficulty == GameManager.diff.four)//diff is four
+                {
+                    passLvlFour = true;
+                    nextScene = "01";
+                }
                 break;
             case scene.four:
                 checkNextDiff();
+                passLvlFour = false;
                 nextScene = "01";
                 break;
             default:
@@ -86,27 +108,22 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
 
         if(currentScene.name == "Level01")
         {
-            //Debug.Log("Scene One");
             _scene = scene.one;
         }
         else if(currentScene.name == "Level02")
         {
-            //Debug.Log("Scene two");
             _scene = scene.two;
         }
         else if(currentScene.name == "Level03")
         {
-            //Debug.Log("Scene Three");
             _scene = scene.three;
         }
         else if(currentScene.name == "Level04")
         {
-            //Debug.Log("Scene four");
             _scene = scene.four;
         }
         else if(currentScene.name == "CutScene")
         {
-            //Debug.Log("Scene four");
             _scene = scene.cutScene;
         }
     }

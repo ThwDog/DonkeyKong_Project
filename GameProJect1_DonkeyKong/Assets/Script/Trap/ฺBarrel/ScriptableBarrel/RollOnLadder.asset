@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RollOnLadder
   m_EditorClassIdentifier: 
   _type: 3
-  speed: 1250
+  speed: 1300

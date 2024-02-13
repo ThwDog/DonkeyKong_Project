@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -16,6 +17,7 @@ public class BarrelHolder : MonoBehaviour , IDestoryable
     private void Start() 
     {
         rollType = GetComponent<BarrelRollType>();
+        getDir();
     }
 
     private void Update() 
@@ -57,6 +59,17 @@ public class BarrelHolder : MonoBehaviour , IDestoryable
                 rollType._RollingOnLadder(barrelType.speed);
                 break;
         }
+    }
+
+    void getDir()
+    {
+        GameObject[] obj = GameObject.FindGameObjectsWithTag("SetDir"); 
+
+        foreach(var dir in obj)
+        {
+            setDirection.Add(dir.transform);
+        }
+        //setDirection.AddRange(GameObject.FindGameObjectsWithTag("SetDir"));
     }
 
     private void OnDrawGizmos() 
