@@ -32,7 +32,7 @@ public class SpawnPointScript : MonoBehaviour
         }
     }
 
-    public virtual void spawnEnemy()
+    public void spawnEnemy()
     {
         if(spawnType == _spawnType.enemy)
         {

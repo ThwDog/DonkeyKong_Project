@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttackPoint : MonoBehaviour
@@ -36,6 +37,18 @@ public class AttackPoint : MonoBehaviour
         if(collectItem.haveWeapon && other.CompareTag("Enemy"))
         {
             Debug.Log("Hit Enemy");
+            if(other.gameObject.GetComponent<EnemyHolder>())
+            {
+                EnemyHolder enemy = other.GetComponent<EnemyHolder>();
+                GameManager.instance.IncreaseScore(enemy.score,"Kill Enemy");
+                Destroy(other.gameObject);
+            }
+            if(other.gameObject.GetComponent<BarrelHolder>())
+            {
+                BarrelHolder barrel = other.GetComponent<BarrelHolder>();
+                GameManager.instance.IncreaseScore(barrel.score,"hit barrel");
+                Destroy(other.gameObject);
+            }
         }
     }
 }
