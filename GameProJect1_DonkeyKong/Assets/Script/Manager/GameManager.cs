@@ -22,10 +22,13 @@ public class GameManager : SingletonClass<GameManager>
     public int _LP = 3;
     public int score = 0;
     public int topScore = 0;
+    public bool lose = false;
 
     private void Update() 
     {
         topScoreChange();
+        loseGame(_LP);
+        winGame(ScriptSceneManager.instance);
     }
 
     public override void Awake() 
@@ -44,9 +47,23 @@ public class GameManager : SingletonClass<GameManager>
 
     public void topScoreChange()
     {
-        if(score > topScore)
+        int top = 0;
+
+        if(SaveAndLoadScore.instance.saveScore != null)
         {
-            topScore = score;
+            if(score > topScore)
+            {
+                topScore = score;
+            }
+            foreach(var _topScore in SaveAndLoadScore.instance.saveScore)
+            {
+                if(top <  _topScore.score)
+                    top = _topScore.score;
+                if(score < top)
+                {
+                    topScore = top;
+                }   
+            }
         }
     }
 
@@ -60,5 +77,26 @@ public class GameManager : SingletonClass<GameManager>
     {
         score -= value;
         Debug.Log($"Score Decrease : {value} From {form}");
+    }
+
+    public void loseGame(int lp)
+    {
+        if(lp <= 0 && !lose)
+        {
+            lose = true;
+            SaveAndLoadScore.instance.addToList(score);
+            Debug.Log("lose");
+        }
+    }
+
+    public void winGame(ScriptSceneManager sceneManager)
+    {
+        if(sceneManager.win && sceneManager._scene == ScriptSceneManager.scene.cutScene)
+        {
+            sceneManager.win = false;
+            
+            SaveAndLoadScore.instance.addToList(score);
+            Debug.Log("Win");
+        }
     }
 }

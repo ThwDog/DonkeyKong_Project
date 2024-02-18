@@ -15,22 +15,21 @@ public class UIManager : MonoBehaviour
     GameManager gm;
     ScoreManager scoreManager;
 
-    private void Awake() 
+    private void Awake()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>(); 
-        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>(); 
+        
+    }
+
+    private void Start() 
+    {
+        if(GameObject.Find("ScoreManager") != null)
+            scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>(); 
     }
 
     private void Update() 
     {
-        int level = checkDiff();
-
-        score_Text.text = gm.score.ToString();    
-        topScore_Text.text = gm.topScore.ToString();
-        bonusScore_Text.text = scoreManager._CurrentBonusScore.ToString();
-        
-        level_Text.text = level.ToString();
-        lp.text = gm._LP.ToString();
+        updateText();
     }
 
     int checkDiff()
@@ -59,4 +58,16 @@ public class UIManager : MonoBehaviour
         return 0;
     }
 
+    void updateText()
+    {
+        int level = checkDiff();
+
+        score_Text.text = gm.score.ToString();    
+        topScore_Text.text = "HIGH SCORE \n" + gm.topScore.ToString();
+        if(bonusScore_Text != null)
+            bonusScore_Text.text = scoreManager._CurrentBonusScore.ToString();
+        
+        level_Text.text = level.ToString();
+        lp.text = gm._LP.ToString();
+    }
 }

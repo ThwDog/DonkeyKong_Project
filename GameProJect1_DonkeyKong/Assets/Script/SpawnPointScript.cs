@@ -9,9 +9,12 @@ public class SpawnPointScript : MonoBehaviour
         normal , enemy
     }
 
+    [Header("Setting")]
     public GameObject spawned;
     [SerializeField] bool canMutiSpawn;
     public _spawnType spawnType;
+    [SerializeField][Range(0,10)] float spawnDelayTime;
+    private bool canSpawn = true;
 
     private void Awake() 
     {
@@ -32,11 +35,20 @@ public class SpawnPointScript : MonoBehaviour
         }
     }
 
-    public void spawnEnemy()
+    public void spawnEnemy(GameObject spawn)
     {
-        if(spawnType == _spawnType.enemy)
+        if(spawnType == _spawnType.enemy && canSpawn)
         {
+            StartCoroutine(spawnDelay(spawn));
             Debug.Log("Spawn Enemy");
         }
+    }
+
+    IEnumerator spawnDelay(GameObject spawn)
+    {
+        canSpawn = false;
+        Instantiate(spawn,transform.position,Quaternion.identity);
+        yield return new WaitForSeconds(spawnDelayTime);
+        canSpawn = true;
     }
 }

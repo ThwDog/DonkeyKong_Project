@@ -39,7 +39,7 @@ public class ElevatorScript : MonoBehaviour
         if(_base.playerHasTouch || gameManager.state != GameManager._state.playing)
         {
             start = false;
-            player.isDead = true;
+            player.takeDamage();
         }
         else start = true;
         

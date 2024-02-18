@@ -200,6 +200,8 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
 
     public void dead()
     {
+        if(GameManager.instance._LP <= 0)
+            isDead = true;
         if(isDead)
             inputCon.releaseController();
         //else inputCon.gainController();
@@ -257,7 +259,15 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
         GameManager.instance._LP--;
         //player dead play animation wait and re scene
         isDead = true;
+        // if(GameManager.instance._LP != 0 && isDead)
+        //     StartCoroutine(revive());
     }
 
-
+    IEnumerator revive()
+    {
+        //play animation dead
+        yield return new WaitForSeconds(3.0f);
+        //reset position player 
+        isDead = false;
+    }
 }

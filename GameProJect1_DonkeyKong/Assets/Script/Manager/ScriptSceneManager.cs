@@ -18,6 +18,7 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
     public scene _scene;
     private string nextScene;
     private bool passLvlFour = false;
+    public bool win = false;
 
     public override void Awake() 
     { 
@@ -52,7 +53,6 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
                 SceneManager.LoadScene("CutScene");
                 GameManager.instance.state = GameManager._state.playing;
             }
-            //Debug.Log("Win");
         }
         
     }
@@ -93,10 +93,19 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
                 }
                 break;
             case scene.four:
-                checkNextDiff();
-                passLvlFour = false;
-                nextScene = "01";
+                if(GameManager.instance.difficulty == GameManager.diff.four)//diff is four
+                {
+                    win = true;
+                }
+                else
+                {
+                    checkNextDiff();
+                    passLvlFour = false;
+                    nextScene = "01";
+                }
                 break;
+            case scene.cutScene:
+                
             default:
                 break;
         }
