@@ -38,6 +38,12 @@ public class SoundManager : SingletonClass<SoundManager>
         }
     }
 
+    public void StopAllMusic()
+    {
+        Debug.Log("Stop all music");
+        musicSource.Stop();
+    }
+
     public void PlaySfx(string nameSfx)
     {
         Sound s = Array.Find(sfxSound, x => x.nameSound == nameSfx);
@@ -51,9 +57,7 @@ public class SoundManager : SingletonClass<SoundManager>
             Debug.Log(s.clip);
             sfxSource.PlayOneShot(s.clip);
         }
-    }
-
-        
+    }  
 
     public AudioClip SearchSfx(string nameSound)
     {

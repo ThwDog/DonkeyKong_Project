@@ -20,6 +20,9 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
     private bool passLvlFour = false;
     public bool win = false;
 
+    [Header("About animation and music")]
+    private bool canPlayMusic = true;
+
     public override void Awake() 
     { 
         base.Awake();
@@ -33,9 +36,12 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
     private void Update() 
     {
         checkCurrentScene();
+        playMusicOnScene();
 
         if(GameManager.instance.state == GameManager._state.win)
         {
+            canPlayMusic = true;
+            SoundManager.instance.StopAllMusic();
             if(GameObject.Find("ScoreManager") != null)
             {
                 ScoreManager score = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
@@ -155,6 +161,40 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
             case GameManager.diff.four:
                 break;
             default:
+                break;
+        }
+    }
+
+    void playMusicOnScene()
+    {
+        var currentScene = _scene;
+        switch(currentScene)
+        {
+            case scene.one:
+                if(canPlayMusic)
+                {
+                    SoundManager.instance.PlayMusic("State01BGM");
+                    canPlayMusic = false;
+                }
+                break;
+            case scene.two:
+                
+                break;
+            case scene.three:
+                if(canPlayMusic)
+                {
+                    SoundManager.instance.PlayMusic("State03BGM");
+                    canPlayMusic = false;
+                }
+                break;
+            case scene.four:
+                if(canPlayMusic)
+                {
+                    SoundManager.instance.PlayMusic("State04BGM");
+                    canPlayMusic = false;
+                }
+                break;
+            case scene.cutScene:
                 break;
         }
     }

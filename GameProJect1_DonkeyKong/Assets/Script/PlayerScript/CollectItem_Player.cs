@@ -10,6 +10,8 @@ public class CollectItem_Player : MonoBehaviour
     [SerializeField]float holdSec;//How long player can hold weapon
     private Controller control;
     private PlayerControl player;
+    [Header("About anim and audio")]
+    private bool canPlayMusic = true;
 
     [SerializeField] GameObject hammer;//Just For show Pls Delete 
 
@@ -48,8 +50,14 @@ public class CollectItem_Player : MonoBehaviour
     {
         if(haveWeapon)
         {
+            if(canPlayMusic)
+            {
+                SoundManager.instance.PlaySfx("Hammer");
+                canPlayMusic = false;
+            }
             yield return new WaitForSeconds(holdSec);
             hammer.SetActive(false);//Just For show Pls Delete 
+            canPlayMusic = true;
             haveWeapon = false;
             weapon.Clear();
         }
@@ -59,6 +67,7 @@ public class CollectItem_Player : MonoBehaviour
     {
         if(haveWeapon)
             player.canClimbing = false;
-        else player.canClimbing = true;
+        else
+            player.canClimbing = true;
     }
 }

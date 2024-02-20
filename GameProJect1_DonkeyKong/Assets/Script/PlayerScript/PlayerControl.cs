@@ -37,7 +37,8 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
     private float startOfFall;
     [SerializeField][Range(0,10)] float minFall;
     
-
+    [Header("About animation and audio")]
+    private bool canWalk = true;
 
     [Header("player")]
     [SerializeField]private bool _isDead = false;
@@ -101,6 +102,8 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
             isClimbing = true;
         if(!isLadderDown || !isLadder || isLadder & isGrounded)
         {
+            if(inputCon.movement.x != 0 && canWalk && isGrounded)
+                StartCoroutine(delayWalk());
             Vector3 move = new Vector3(inputCon.movement.x,0,0);
             //only side move
             if(move.sqrMagnitude > 1.0f)
@@ -111,6 +114,14 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
         }
         climb();
     
+    }
+
+    IEnumerator delayWalk()
+    {
+        canWalk = false;
+        SoundManager.instance.PlaySfx("Walk");
+        yield return new WaitForSeconds(0.3f);
+        canWalk = true;
     }
 
     /*void checkRay()
@@ -194,6 +205,7 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
     IEnumerator jumpDelay()
     {
         canJump = false;
+        SoundManager.instance.PlaySfx("Jump");
         yield return new WaitForSeconds(input_Delay);
         canJump = true;
     }
