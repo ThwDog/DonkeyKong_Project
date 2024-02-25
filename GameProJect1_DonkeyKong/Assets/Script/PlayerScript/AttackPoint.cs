@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AttackPoint : MonoBehaviour
 {
-    bool right = true;
+    //bool right = true;
     CollectItem_Player collectItem;
     Controller controller;
 
@@ -18,20 +18,21 @@ public class AttackPoint : MonoBehaviour
 
     private void Update() 
     {
-        filp();
-        if(controller.movement.x > 0f)
-            right = true;  
-        else if(controller.movement.x < 0f) 
-            right = false;
+        //filp();
+        // if(controller.movement.x > 0f)
+        //     right = true;  
+        // else if(controller.movement.x < 0f) 
+        //     right = false;
     }
 
-    void filp()
-    {
-        if(right)
-            transform.rotation = new Quaternion(0,0,0,0);
-        else 
-            transform.rotation = new Quaternion(0,180,0,0);
-    }
+    // void filp()
+    // {
+    //     if(right)
+    //         transform.rotation = new Quaternion(0,0,0,0);
+    //     else 
+    //         transform.rotation = new Quaternion(0,180,0,0);
+    // }
+    
     void OnTriggerEnter(Collider other)
     {
         if(collectItem.haveWeapon && other.CompareTag("Enemy"))

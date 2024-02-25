@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController),typeof(Controller))]
 public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
@@ -29,6 +30,7 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
     [HideInInspector]public bool canClimbing = true;
     [SerializeField]private bool isLadder = false;
     [SerializeField]private bool isLadderDown = false;
+    [SerializeField]private float rotationSpeed;
     
     [Header("Fall System")]
     private bool isGrounded;//current ground
@@ -108,6 +110,13 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
             //only side move
             if(move.sqrMagnitude > 1.0f)
                 move.Normalize();
+
+            if(move != Vector3.zero && !isClimbing)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(move,Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation,toRotation,rotationSpeed * Time.deltaTime);
+            }
+            
             if(!isClimbing)
                 move += verticalSpeed * Vector3.up * Time.deltaTime;
             player.Move(move *speed);
@@ -212,8 +221,11 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
 
     public void dead()
     {
-        if(GameManager.instance._LP <= 0)
-            isDead = true;
+        if(GameManager.instance._LP <= 0) 
+        {
+            SceneManager.LoadScene("MainMenu");
+            GameManager.instance._reset();
+        }
         if(isDead)
             inputCon.releaseController();
         //else inputCon.gainController();
@@ -268,18 +280,22 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
 
     public void takeDamage()
     {
-        GameManager.instance._LP--;
-        //player dead play animation wait and re scene
-        isDead = true;
-        // if(GameManager.instance._LP != 0 && isDead)
-        //     StartCoroutine(revive());
+        if(canTakeDamage)
+        {
+            GameManager.instance._LP--;
+            //player dead play animation wait and re scene
+            isDead = true;
+            
+            if(GameManager.instance._LP != 0 && isDead)
+                 StartCoroutine(revive());
+        }
     }
 
     IEnumerator revive()
     {
         //play animation dead
-        yield return new WaitForSeconds(3.0f);
-        //reset position player 
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         isDead = false;
     }
 }

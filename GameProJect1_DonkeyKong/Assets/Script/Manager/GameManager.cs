@@ -42,7 +42,9 @@ public class GameManager : SingletonClass<GameManager>
     {
         _LP = 3;
         score = 0;
+        lose = false;
         state = _state.playing;
+        difficulty = diff.one;
     }
 
     public void topScoreChange()
@@ -93,10 +95,14 @@ public class GameManager : SingletonClass<GameManager>
     {
         if(sceneManager.win && sceneManager._scene == ScriptSceneManager.scene.cutScene)
         {
-            sceneManager.win = false;
-            
-            SaveAndLoadScore.instance.addToList(score);
-            Debug.Log("Win");
+            if(state == _state.win)
+            {
+                SaveAndLoadScore.instance.addToList(score);
+                _reset();
+                //ScriptSceneManager.instance.toMainMenu();
+                sceneManager.win = false;
+                Debug.Log("Win");
+            }
         }
     }
 }

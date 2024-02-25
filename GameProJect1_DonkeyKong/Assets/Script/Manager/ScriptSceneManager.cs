@@ -12,7 +12,8 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
         one  = 1, 
         two  = 2, 
         three = 3, 
-        four = 4
+        four = 4,
+        mainMenu = 5 
     }
 
     public scene _scene;
@@ -47,20 +48,46 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
                 ScoreManager score = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
                 score.finish();
             }
-            if(_scene == scene.cutScene)
-            {
-                SceneManager.LoadScene("Level" + nextScene);    
-                GameManager.instance.state = GameManager._state.playing;
-                checkNextScene();
-            }
-            else
+            // if(_scene == scene.cutScene && !win)
+            // {   
+            //     SceneManager.LoadScene("Level" + nextScene);    
+            //     GameManager.instance.state = GameManager._state.playing;
+            //     checkNextScene();
+            // }
+            if(_scene != scene.cutScene)
             {
                 checkNextScene();
                 SceneManager.LoadScene("CutScene");
                 GameManager.instance.state = GameManager._state.playing;
             }
         }
-        
+
+        if(_scene == scene.mainMenu)
+        {
+            if(Input.anyKey)
+            {
+                checkNextScene();
+                SceneManager.LoadScene("Level" + nextScene);    
+            }
+        }
+
+        if(_scene == scene.cutScene)
+        {
+            if(Input.anyKey)
+            {
+                if(win)
+                {
+                    GameManager.instance.state = GameManager._state.win;  
+                    toMainMenu();
+                }
+                else
+                {
+                    SceneManager.LoadScene("Level" + nextScene); 
+                    GameManager.instance.state = GameManager._state.playing;
+                    checkNextScene();
+                }
+            }
+        }
     }
 
     void checkNextScene()
@@ -111,35 +138,45 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
                 }
                 break;
             case scene.cutScene:
-                
+                break;
+            case scene.mainMenu:
+                nextScene = "01";
+                break;
             default:
                 break;
         }
+    }
+
+    public void toMainMenu()
+    {
+        Debug.Log("ToMain");
+        SceneManager.LoadScene("MainMenu");
     }
 
     void checkCurrentScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
 
-        if(currentScene.name == "Level01")
+        switch(currentScene.name)
         {
-            _scene = scene.one;
-        }
-        else if(currentScene.name == "Level02")
-        {
-            _scene = scene.two;
-        }
-        else if(currentScene.name == "Level03")
-        {
-            _scene = scene.three;
-        }
-        else if(currentScene.name == "Level04")
-        {
-            _scene = scene.four;
-        }
-        else if(currentScene.name == "CutScene")
-        {
-            _scene = scene.cutScene;
+            case "Level01":
+                _scene = scene.one;
+                break;
+            case "Level02":
+                _scene = scene.two;
+                break;
+            case "Level03":
+                _scene = scene.three;
+                break;
+            case "Level04":
+                _scene = scene.four;
+                break;
+            case "CutScene":
+                _scene = scene.cutScene;
+                break;
+            case "MainMenu":
+                _scene = scene.mainMenu;
+                break;
         }
     }
 

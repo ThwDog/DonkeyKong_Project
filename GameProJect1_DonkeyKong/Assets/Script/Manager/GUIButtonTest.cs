@@ -10,15 +10,14 @@ public class GUIButtonTest : MonoBehaviour
 
     private void Update() 
     {
+        if(Input.GetKey(KeyCode.F1) && !ShowGui)
+            ShowGui = true;
+        else if(Input.GetKey(KeyCode.F1) && ShowGui)
+            ShowGui = false;
         if(GameObject.FindGameObjectWithTag("Player") != null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
-        }    
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();  
         else
-        {
             player = null;
-        }
-        
     }
 
     void OnGUI() 

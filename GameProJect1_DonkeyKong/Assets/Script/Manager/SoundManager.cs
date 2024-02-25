@@ -59,6 +59,21 @@ public class SoundManager : SingletonClass<SoundManager>
         }
     }  
 
+    public void StopSfx(string nameSfx)
+    {
+        Sound s = Array.Find(sfxSound, x => x.nameSound == nameSfx);
+        if (s == null)
+        {
+            Debug.Log("Not have SFX");
+        }
+        else
+        {
+            Debug.Log($"Stop Sfx {nameSfx}");
+            Debug.Log(s.clip);
+            sfxSource.Stop();
+        }
+    }  
+
     public AudioClip SearchSfx(string nameSound)
     {
         AudioClip sound = null;

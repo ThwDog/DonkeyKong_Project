@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -8,6 +9,7 @@ public class Controller : MonoBehaviour
     public static Controller instance{ get{return _instance;}}
     [Header("Controller")]
     public bool blockController;
+    public bool blockJump;
     public KeyCode jumpKey;
 
     protected Vector2 p_Movement;
@@ -25,7 +27,12 @@ public class Controller : MonoBehaviour
 
     public bool jump
     {
-        get{return p_jump && !blockController;}
+        get
+        {
+            if(blockJump)
+                return false;
+            return p_jump && !blockController;
+        }
     }
 
 
@@ -54,5 +61,15 @@ public class Controller : MonoBehaviour
     public void gainController()
     {
         blockController = false;
+    }
+
+    public void releaseJumpKey()
+    {
+        blockJump = true;
+    }
+
+    public void gainJumpKey()
+    {
+        blockJump = false;
     }
 }

@@ -12,6 +12,7 @@ public class DeadLine : MonoBehaviour
 
     public _lineType LineType;
     private int lineTypeNum;
+    [SerializeField] float timeStay = 2;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class DeadLine : MonoBehaviour
             winLine(other);
     }
 
+
     private void destroyObjLine(Collider other)
     {
         if(other.gameObject.layer != 8 || other.gameObject.layer != 6 || other.gameObject.layer != 10)
@@ -41,7 +43,14 @@ public class DeadLine : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Win");
-            GameManager.instance.state = GameManager._state.win;
+            StartCoroutine(playWinAnimation());
         } 
+    }
+
+    IEnumerator playWinAnimation()
+    {
+        //play animation
+        yield return new WaitForSeconds(timeStay);
+        GameManager.instance.state = GameManager._state.win;
     }
 }

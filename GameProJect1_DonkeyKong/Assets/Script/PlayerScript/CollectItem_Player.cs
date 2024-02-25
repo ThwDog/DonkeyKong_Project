@@ -12,6 +12,7 @@ public class CollectItem_Player : MonoBehaviour
     private PlayerControl player;
     [Header("About anim and audio")]
     private bool canPlayMusic = true;
+    Coroutine hammerHoldCoroutine;
 
     [SerializeField] GameObject hammer;//Just For show Pls Delete 
 
@@ -23,8 +24,15 @@ public class CollectItem_Player : MonoBehaviour
 
     private void Update() 
     {
+        if(Input.GetKey(KeyCode.Z) && haveWeapon)
+        {
+            haveWeapon = false;
+            SoundManager.instance.StopSfx("Hammer");
+            StopCoroutine(hammerHoldCoroutine);
+            resetBeforeHaveWeapon();
+        }
+        hammerHoldCoroutine = StartCoroutine(_HolderWeapon(holdSec));
         havingWeapon();
-        StartCoroutine(_HolderWeapon(holdSec));
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -55,12 +63,19 @@ public class CollectItem_Player : MonoBehaviour
                 SoundManager.instance.PlaySfx("Hammer");
                 canPlayMusic = false;
             }
+            control.releaseJumpKey();
             yield return new WaitForSeconds(holdSec);
-            hammer.SetActive(false);//Just For show Pls Delete 
-            canPlayMusic = true;
-            haveWeapon = false;
-            weapon.Clear();
+            resetBeforeHaveWeapon();
         }
+    }
+
+    void resetBeforeHaveWeapon()
+    {
+        control.gainJumpKey();
+        hammer.SetActive(false);//Just For show Pls Delete 
+        canPlayMusic = true;
+        haveWeapon = false;
+        weapon.Clear();
     }
 
     public void havingWeapon()
