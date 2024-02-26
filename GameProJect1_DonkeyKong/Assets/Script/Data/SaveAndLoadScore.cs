@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaveAndLoadScore : SingletonClass<SaveAndLoadScore>
 {
     [SerializeField] int id = 1;
     [SerializeField] string filename;
-    public List<SaveHighScoreData> saveScore = new List<SaveHighScoreData>();
+    internal List<SaveHighScoreData> saveScore = new List<SaveHighScoreData>();
+   [SerializeField] internal List<int> TopScoreSortList = new List<int>();
 
     private void Start() 
     {
         saveScore = FileHandler.ReadListFromJSON<SaveHighScoreData>(filename);
+        if(saveScore != null)
+            sortScore();
         idCheck();
     }
 
@@ -18,6 +22,9 @@ public class SaveAndLoadScore : SingletonClass<SaveAndLoadScore>
     {
         saveScore.Add(new SaveHighScoreData(id,score));
         FileHandler.SaveToJSON<SaveHighScoreData>(saveScore,filename);
+        TopScoreSortList.Add(score);
+        TopScoreSortList.Sort();
+        TopScoreSortList.Reverse();
     }
 
     private void idCheck()
@@ -29,5 +36,27 @@ public class SaveAndLoadScore : SingletonClass<SaveAndLoadScore>
                 id++;
             }
         }
+    }
+
+    public void sortScore()
+    {
+        Dictionary<int,int> keys = new Dictionary<int, int>();
+        foreach(var dic in saveScore)
+        {
+            if(keys.ContainsKey(dic.id))
+            {
+                if(keys[dic.id] < dic.score)
+                    keys[dic.id] = dic.score;                
+                TopScoreSortList.Add(dic.score);
+            }
+            else
+            { 
+                keys.Add(dic.id,dic.score);
+                TopScoreSortList.Add(dic.score);
+            }
+        }   
+
+        TopScoreSortList.Sort();
+        TopScoreSortList.Reverse();
     }
 }

@@ -23,6 +23,19 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
 
     [Header("About animation and music")]
     private bool canPlayMusic = true;
+    public bool _CanPlayMusic
+    {
+        get
+        {
+            if(GameManager.instance.state == GameManager._state.lose || GameManager.instance.state == GameManager._state.win)
+                return false;
+            return canPlayMusic;
+        }
+        set
+        {
+            canPlayMusic = value;
+        }
+    } 
 
     public override void Awake() 
     { 
@@ -41,19 +54,20 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
 
         if(GameManager.instance.state == GameManager._state.win)
         {
-            canPlayMusic = true;
+            if(FindObjectOfType<CollectItem_Player>())
+            {
+                CollectItem_Player player = FindObjectOfType<CollectItem_Player>();
+                GameManager.instance.IncreaseScore(player.playerScore);
+            }
+
             SoundManager.instance.StopAllMusic();
+
             if(GameObject.Find("ScoreManager") != null)
             {
                 ScoreManager score = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
                 score.finish();
             }
-            // if(_scene == scene.cutScene && !win)
-            // {   
-            //     SceneManager.LoadScene("Level" + nextScene);    
-            //     GameManager.instance.state = GameManager._state.playing;
-            //     checkNextScene();
-            // }
+            
             if(_scene != scene.cutScene)
             {
                 checkNextScene();
@@ -208,30 +222,34 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
         switch(currentScene)
         {
             case scene.one:
-                if(canPlayMusic)
+                if(_CanPlayMusic)
                 {
                     SoundManager.instance.PlayMusic("State01BGM");
-                    canPlayMusic = false;
+                    _CanPlayMusic = false;
                 }
                 break;
             case scene.two:
                 
                 break;
             case scene.three:
-                if(canPlayMusic)
+                if(_CanPlayMusic)
                 {
                     SoundManager.instance.PlayMusic("State03BGM");
-                    canPlayMusic = false;
+                    _CanPlayMusic = false;
                 }
                 break;
             case scene.four:
-                if(canPlayMusic)
+                if(_CanPlayMusic)
                 {
                     SoundManager.instance.PlayMusic("State04BGM");
-                    canPlayMusic = false;
+                    _CanPlayMusic = false;
                 }
                 break;
             case scene.cutScene:
+                break;
+            case scene.mainMenu:
+                break;
+            default:
                 break;
         }
     }

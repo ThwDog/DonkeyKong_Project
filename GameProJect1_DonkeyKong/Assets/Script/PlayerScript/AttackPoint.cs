@@ -41,13 +41,15 @@ public class AttackPoint : MonoBehaviour
             if(other.gameObject.GetComponent<EnemyHolder>())
             {
                 EnemyHolder enemy = other.GetComponent<EnemyHolder>();
-                GameManager.instance.IncreaseScore(enemy.score,"Kill Enemy");
+                //GameManager.instance.IncreaseScore(enemy.score,"Kill Enemy");
+                collectItem.IncreaseScore(enemy.score,"Kill Enemy");
                 Destroy(other.gameObject);
             }
             if(other.gameObject.GetComponent<BarrelHolder>())
             {
                 BarrelHolder barrel = other.GetComponent<BarrelHolder>();
-                GameManager.instance.IncreaseScore(barrel.score,"hit barrel");
+                //GameManager.instance.IncreaseScore(barrel.score,"hit barrel");
+                collectItem.IncreaseScore(barrel.score,"hit barrel");
                 Destroy(other.gameObject);
             }
         }

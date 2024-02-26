@@ -223,6 +223,7 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
     {
         if(GameManager.instance._LP <= 0) 
         {
+            SoundManager.instance.StopAllMusic();
             SceneManager.LoadScene("MainMenu");
             GameManager.instance._reset();
         }
@@ -244,7 +245,7 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
         float fallDis = startOfFall - transform.position.y;
         if(fallDis > minFall)
         {
-            GameManager.instance._LP--;
+            takeDamage();
             Debug.Log("Fall Damage");
         }
     }

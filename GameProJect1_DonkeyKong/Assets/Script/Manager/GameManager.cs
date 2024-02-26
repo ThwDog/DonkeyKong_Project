@@ -27,8 +27,8 @@ public class GameManager : SingletonClass<GameManager>
     private void Update() 
     {
         topScoreChange();
-        loseGame(_LP);
         winGame(ScriptSceneManager.instance);
+        loseGame(_LP);
     }
 
     public override void Awake() 
@@ -40,6 +40,8 @@ public class GameManager : SingletonClass<GameManager>
 
     public void _reset()
     {
+        ScriptSceneManager.instance._CanPlayMusic = true;
+
         _LP = 3;
         score = 0;
         lose = false;
@@ -49,37 +51,24 @@ public class GameManager : SingletonClass<GameManager>
 
     public void topScoreChange()
     {
-        int top = 0;
-
-        if(SaveAndLoadScore.instance.saveScore != null)
-        {
-            if(score > topScore)
-            {
-                topScore = score;
-            }
-            foreach(var _topScore in SaveAndLoadScore.instance.saveScore)
-            {
-                if(top <  _topScore.score)
-                    top = _topScore.score;
-                if(score < top)
-                {
-                    topScore = top;
-                }   
-            }
-        }
+        if(score > topScore)
+            topScore = score;
+        
+        if(SaveAndLoadScore.instance.TopScoreSortList.Count.Equals(0))
+            return;
+        
+        int top = SaveAndLoadScore.instance.TopScoreSortList[0];
+        
+        if(score < top) topScore = top;
+        
     }
 
-    public void IncreaseScore(int value,string form)
+    public void IncreaseScore(int value)
     {
         score += value;
-        Debug.Log($"Score Increase : {value} From {form}");
+        Debug.Log($"Score Data Increase : {value}");
     }
 
-    public void DecreaseScore(int value,string form)
-    {
-        score -= value;
-        Debug.Log($"Score Decrease : {value} From {form}");
-    }
 
     public void loseGame(int lp)
     {

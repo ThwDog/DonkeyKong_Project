@@ -65,7 +65,8 @@ public class ScoreManager : MonoBehaviour
     {
         if(GameManager.instance.state == GameManager._state.win && !hasSentScore)
         {
-            GameManager.instance.score += _CurrentBonusScore;
+            //GameManager.instance.score += _CurrentBonusScore;
+            GameManager.instance.IncreaseScore(_CurrentBonusScore);
             hasSentScore = true;
         }
     }

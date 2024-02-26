@@ -31,7 +31,9 @@ public class BarrelHolder : MonoBehaviour , IDestoryable
                 if (hit.collider.gameObject.CompareTag("Player") && !playerHaveCross) 
                 {
                     playerHaveCross = true;
-                    GameManager.instance.IncreaseScore(score,"Jump ON");
+                    CollectItem_Player player = hit.collider.GetComponent<CollectItem_Player>();
+                    player.IncreaseScore(score,"Jump ON");          
+                    //GameManager.instance.IncreaseScore(score,"Jump ON");
                 }
             }   
     }

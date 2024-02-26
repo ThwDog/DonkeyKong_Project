@@ -6,19 +6,19 @@ public class ItemHolder : MonoBehaviour
 {
     public ItemScriptable _Item;
 
-
     private void Awake() 
     {
     }
 
-    public void checkType()
+    public void checkType(CollectItem_Player player)
     {
         if(_Item.type == ItemScriptable.Type.collectScore)
         {
             CollectaleItem_Score collectaleItem = (CollectaleItem_Score)_Item;
             collectaleItem.setScore(GameManager.instance);
             //add score to score manager
-            GameManager.instance.IncreaseScore(collectaleItem.score,$"Collect {collectaleItem._name}");
+            //GameManager.instance.IncreaseScore(collectaleItem.score,$"Collect {collectaleItem._name}");
+            player.IncreaseScore(collectaleItem.score,$"Collect {collectaleItem._name}");
             StartCoroutine(destroy());
 
         }

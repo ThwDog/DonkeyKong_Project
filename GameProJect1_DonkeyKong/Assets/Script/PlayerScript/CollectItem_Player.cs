@@ -13,11 +13,13 @@ public class CollectItem_Player : MonoBehaviour
     [Header("About anim and audio")]
     private bool canPlayMusic = true;
     Coroutine hammerHoldCoroutine;
-
     [SerializeField] GameObject hammer;//Just For show Pls Delete 
+    [Header("")]
+    public int playerScore = 0;
 
     private void Start() 
     {
+        playerScore = 0;
         control = GetComponent<Controller>();    
         player = GetComponent<PlayerControl>();    
     }
@@ -45,11 +47,12 @@ public class CollectItem_Player : MonoBehaviour
                 weapon.Add(item._Item.obj);
                 haveWeapon = true;
                 hammer.SetActive(true);//Just For show Pls Delete 
-                item.checkType();
+
+                item.checkType(this);
             }
             else if(item._Item.type == ItemScriptable.Type.collectScore)
             {
-                item.checkType();
+                item.checkType(this);
             }
         }
     }
@@ -85,4 +88,11 @@ public class CollectItem_Player : MonoBehaviour
         else
             player.canClimbing = true;
     }
+
+    public void IncreaseScore(int value,string form)
+    {
+        playerScore += value;
+        Debug.Log($"Player Score Increase : {value} From {form}");
+    }
+
 }

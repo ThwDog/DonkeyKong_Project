@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,29 +13,72 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text bonusScore_Text;
     [SerializeField] TMP_Text level_Text;
     [SerializeField] TMP_Text lp;//just for show live point
-    GameManager gm;
     ScoreManager scoreManager;
-
-    private void Awake()
-    {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>(); 
-        
-    }
+    [Header("Main Menu UI")]
+    [SerializeField] GameObject startBlinkingText;
+    [SerializeField] TMP_Text topFiveScoreRank_Text;
+    [SerializeField][Range(0,100)] float blinkingTime;
 
     private void Start() 
     {
         if(GameObject.Find("ScoreManager") != null)
             scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>(); 
+        if(startBlinkingText)
+            StartCoroutine(textBlinking(blinkingTime));
+        
     }
 
     private void Update() 
     {
         updateText();
+        if(topFiveScoreRank_Text)
+            showTopFive();
+    }
+
+    private void showTopFive()
+    {
+        topFiveScoreRank_Text.text = "";
+
+        int rank = 1;
+        string rankDis = "";
+        string script = "";
+        int inList = 0;
+        if(SaveAndLoadScore.instance.TopScoreSortList.Count.Equals(0))
+            return;
+            
+        if(SaveAndLoadScore.instance.TopScoreSortList.Count < 5)
+            inList = SaveAndLoadScore.instance.TopScoreSortList.Count;
+        else inList = 5;
+
+        for(int i = 0;i < inList;i++)
+        {
+            switch(rank)
+            {
+                case 1:
+                    rankDis = "1st";
+                    break;
+                case 2:
+                    rankDis = "2nd";
+                    break;
+                case 3:
+                    rankDis = "3rd";
+                    break;
+                case 4:
+                    rankDis = "4th";
+                    break;
+                case 5:
+                    rankDis = "5th";
+                    break;
+            }
+            script += $"{rankDis} {SaveAndLoadScore.instance.TopScoreSortList[i]} \n" ;
+            rank++;
+        }
+        topFiveScoreRank_Text.text = script;
     }
 
     int checkDiff()
     {
-        var _diff = gm.difficulty;
+        var _diff = GameManager.instance.difficulty;
         int level;
 
         switch(_diff)
@@ -62,12 +106,33 @@ public class UIManager : MonoBehaviour
     {
         int level = checkDiff();
 
-        score_Text.text = gm.score.ToString();    
-        topScore_Text.text = "HIGH SCORE \n" + gm.topScore.ToString();
+        if(FindObjectOfType<CollectItem_Player>())
+        {
+            CollectItem_Player player = FindObjectOfType<CollectItem_Player>();
+            int scoreSum = GameManager.instance.score + player.playerScore;
+            score_Text.text = scoreSum.ToString();
+        }
+        else
+        {
+            score_Text.text = GameManager.instance.score.ToString();
+        }
+
+        topScore_Text.text = "HIGH SCORE \n" + GameManager.instance.topScore.ToString();
         if(bonusScore_Text != null)
             bonusScore_Text.text = scoreManager._CurrentBonusScore.ToString();
         
         level_Text.text = level.ToString();
-        lp.text = gm._LP.ToString();
+        lp.text = GameManager.instance._LP.ToString();
+    }
+
+    IEnumerator textBlinking(float time)
+    {
+        while(startBlinkingText)
+        {
+            startBlinkingText.SetActive(false);
+            yield return new WaitForSeconds(time);
+            startBlinkingText.SetActive(true);
+            yield return new WaitForSeconds(time);
+        }
     }
 }
