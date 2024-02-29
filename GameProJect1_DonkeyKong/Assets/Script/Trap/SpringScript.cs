@@ -32,7 +32,19 @@ public class SpringScript : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            PlayerControl player = other.GetComponent<PlayerControl>();
+            player.takeDamage();
             Debug.Log("Hit");
         }    
+    }
+
+    public void playVFXHitFloor()
+    {
+        SoundManager.instance.PlaySfx("SpringJump");
+    }
+
+    public void playVFXfall()
+    {
+        SoundManager.instance.PlaySfx("SpringFall");
     }
 }

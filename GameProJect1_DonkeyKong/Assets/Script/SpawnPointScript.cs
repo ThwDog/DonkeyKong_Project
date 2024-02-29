@@ -12,6 +12,7 @@ public class SpawnPointScript : MonoBehaviour
     [Header("Setting")]
     public GameObject spawned;
     [SerializeField] bool canMutiSpawn;
+    [SerializeField] bool canSpawnEnemy;
     public _spawnType spawnType;
     [SerializeField][Range(0,10)] float spawnDelayTime;
     private bool canSpawn = true;
@@ -19,7 +20,8 @@ public class SpawnPointScript : MonoBehaviour
     private void Awake() 
     {
         spawnNormal();
-        
+        if(canSpawnEnemy)
+            spawnEnemy(spawned);
     }
 
     public void spawnNormal()

@@ -284,6 +284,7 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
         if(canTakeDamage)
         {
             GameManager.instance._LP--;
+            SoundManager.instance.StopAllMusic();
             //player dead play animation wait and re scene
             isDead = true;
             
@@ -295,8 +296,12 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
     IEnumerator revive()
     {
         //play animation dead
-        yield return new WaitForSeconds(2.0f);
+        Debug.Log("Dead");
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(2.0f);
+        Debug.Log("Re");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
         isDead = false;
     }
 }

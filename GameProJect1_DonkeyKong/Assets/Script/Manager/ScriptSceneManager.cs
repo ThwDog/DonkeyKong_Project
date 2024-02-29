@@ -52,8 +52,10 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
         checkCurrentScene();
         playMusicOnScene();
 
+        // when state win
         if(GameManager.instance.state == GameManager._state.win)
         {
+            // add score in player 
             if(FindObjectOfType<CollectItem_Player>())
             {
                 CollectItem_Player player = FindObjectOfType<CollectItem_Player>();
@@ -72,6 +74,7 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
             {
                 checkNextScene();
                 SceneManager.LoadScene("CutScene");
+                _CanPlayMusic = true;
                 GameManager.instance.state = GameManager._state.playing;
             }
         }
@@ -246,6 +249,11 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
                 }
                 break;
             case scene.cutScene:
+                if(_CanPlayMusic)
+                {
+                    SoundManager.instance.PlaySfx("HowHighCanUGet");
+                    _CanPlayMusic = false;
+                }
                 break;
             case scene.mainMenu:
                 break;
