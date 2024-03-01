@@ -7,8 +7,9 @@ public class SpawnBarrel : MonoBehaviour
     [Header("Setting")]
     [SerializeField] List<GameObject> barrelType;
     [SerializeField][Range(1,10)] float spawnRate;
+    [SerializeField][Range(1,10)] float animationStartDelay;
     bool canSpawn = true;
-    [SerializeField] bool startSpawner;
+    bool startSpawner;
     private float rndNum;
     private int nextBarrelNum = 1;
     Coroutine spawner;
@@ -28,12 +29,18 @@ public class SpawnBarrel : MonoBehaviour
     public void startSpawn()
     {
         //fix start time 
-        StartCoroutine(startSpawnDelay());
+        Invoke("startFirstSpawn",animationStartDelay);
+        //StartCoroutine(startSpawnDelay());
     }
 
-    IEnumerator startSpawnDelay()
+    void startFirstSpawn()
     {
         Instantiate(barrelType[0],transform.position,barrelType[0].transform.rotation);
+        StartCoroutine(delay());
+    }
+
+    IEnumerator delay()
+    {
         yield return new WaitForSeconds(spawnRate);
         startSpawner = true;
         yield break;

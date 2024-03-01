@@ -224,7 +224,8 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
         if(GameManager.instance._LP <= 0) 
         {
             SoundManager.instance.StopAllMusic();
-            SceneManager.LoadScene("MainMenu");
+            ScriptSceneManager.instance.toMainMenu();
+            //SceneManager.LoadScene("MainMenu");
             GameManager.instance._reset();
         }
         if(isDead)

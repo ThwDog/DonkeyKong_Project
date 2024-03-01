@@ -73,9 +73,22 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
             if(_scene != scene.cutScene)
             {
                 checkNextScene();
-                SceneManager.LoadScene("CutScene");
-                _CanPlayMusic = true;
-                GameManager.instance.state = GameManager._state.playing;
+                // Play Ended Scene
+                if(FindAnyObjectByType<TimelineController>())
+                {
+                    Debug.Log("endScene");
+                    TimelineController timeline = FindAnyObjectByType<TimelineController>();
+                    timeline.endedScene();
+                    //SceneManager.LoadScene("CutScene");
+                    // _CanPlayMusic = true;
+                    GameManager.instance.state = GameManager._state.playing;
+                }
+                else
+                {
+                    SceneManager.LoadScene("CutScene");
+                    _CanPlayMusic = true;
+                    GameManager.instance.state = GameManager._state.playing;
+                }
             }
         }
 

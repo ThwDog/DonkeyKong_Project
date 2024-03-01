@@ -30,9 +30,13 @@ public class UIManager : MonoBehaviour
 
     private void Update() 
     {
-        updateText();
         if(topFiveScoreRank_Text)
             showTopFive();
+    }
+
+    void FixedUpdate()
+    {
+        updateText();
     }
 
     private void showTopFive()
@@ -106,13 +110,13 @@ public class UIManager : MonoBehaviour
     {
         int level = checkDiff();
 
-        if(FindObjectOfType<CollectItem_Player>())
+        if(FindObjectOfType<CollectItem_Player>() && GameManager.instance.state == GameManager._state.playing)
         {
             CollectItem_Player player = FindObjectOfType<CollectItem_Player>();
             int scoreSum = GameManager.instance.score + player.playerScore;
             score_Text.text = scoreSum.ToString();
         }
-        else
+        else //error is when win time scale will be zero and this method doesn't update
         {
             score_Text.text = GameManager.instance.score.ToString();
         }
