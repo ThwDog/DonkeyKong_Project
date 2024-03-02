@@ -26,14 +26,14 @@ public class CollectItem_Player : MonoBehaviour
 
     private void Update() 
     {
-        if(Input.GetKey(KeyCode.Z) && haveWeapon)
+        hammerHoldCoroutine = StartCoroutine(_HolderWeapon(holdSec));
+        if(Input.GetKeyDown(KeyCode.Z) && haveWeapon)
         {
             haveWeapon = false;
             SoundManager.instance.StopSfx("Hammer");
             StopCoroutine(hammerHoldCoroutine);
             resetBeforeHaveWeapon();
         }
-        hammerHoldCoroutine = StartCoroutine(_HolderWeapon(holdSec));
         havingWeapon();
     }
 
