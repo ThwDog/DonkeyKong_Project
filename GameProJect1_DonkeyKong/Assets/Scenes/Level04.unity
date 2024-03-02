@@ -2250,6 +2250,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 449402590}
     - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: canUpdateText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
       propertyPath: topScore_Text
       value: 
       objectReference: {fileID: 449402589}

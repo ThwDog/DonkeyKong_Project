@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,6 +12,7 @@ public class BarrelRollType : MonoBehaviour
     bool hitWall = false;
     bool playerAbove = false;
     [Header("Setting")]
+    [SerializeField] float roteSpeed;
     public bool hitPlayer = false;
     private Collider[] ladderCollider;
     private bool isLadderDown;
@@ -55,6 +57,11 @@ public class BarrelRollType : MonoBehaviour
         }
 
         Vector3 dir = hitColliderRight? Vector3.left : Vector3.right;
+        float _roteSpeed = hitColliderRight? roteSpeed : -roteSpeed;
+        _roteSpeed = hitPlayer? 0 : _roteSpeed;
+
+        barrelRolling(_roteSpeed);
+
         float currentSpeed = hitPlayer || hitWall? 0 : speed;
         //Physics.IgnoreLayerCollision(9,10,playerAbove); 
 
@@ -72,7 +79,10 @@ public class BarrelRollType : MonoBehaviour
     public void _Opening(float speed)
     {
         if(isBaseGround)
+        {
+            transform.localRotation = new Quaternion(transform.rotation.x,0,0,transform.rotation.w);
             rb.AddForce(Vector3.left * speed * Time.deltaTime,ForceMode.Impulse);
+        }
     }
 
     public void _CrossType(List<Transform> goDir,float speed)
@@ -136,8 +146,6 @@ public class BarrelRollType : MonoBehaviour
         if(isClimbing)
         {
             StartCoroutine(ignoreCollision());
-            //Transform ladderDown = ladderCollider[0].gameObject.transform.GetChild(0);
-            //rb.AddForce(Vector3.Lerp(transform.position,ladderDown.position,speed * Time.deltaTime));
         }
     }
 
@@ -153,15 +161,24 @@ public class BarrelRollType : MonoBehaviour
     {
         if(ladderCollider[0].gameObject.transform.GetChild(0) == true)
         {
+            // play animation
+            transform.localRotation = Quaternion.Euler(0,0,90);
             hitWall = true;
             _collider.isTrigger = true;
             hitColliderRight = true;
+            Invoke("resetModel",0.5f);
             yield return new WaitForSeconds(0.3f);//change it if barrel not fall
             isClimbing = false;
             hitWall = false;
             _collider.isTrigger = false;
         }
     }
+
+    void resetModel()
+    {
+        transform.localRotation = Quaternion.Euler(0,90,90);
+    }
+
 
     private void OnCollisionEnter(Collision other) 
     {
@@ -194,5 +211,8 @@ public class BarrelRollType : MonoBehaviour
         }
     }
     
-
+    void barrelRolling(float speed)
+    {
+        transform.Rotate(0,speed *Time.deltaTime,0,Space.Self);
+    }
 }

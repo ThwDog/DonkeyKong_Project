@@ -17,7 +17,7 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
     }
 
     public scene _scene;
-    private string nextScene;
+    internal string nextScene;
     private bool passLvlFour = false;
     public bool win = false;
 
@@ -62,6 +62,12 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
                 GameManager.instance.IncreaseScore(player.playerScore);
             }
 
+            if(FindAnyObjectByType<UIManager>())
+            {
+                UIManager ui = FindAnyObjectByType<UIManager>();
+                ui.canUpdateText = false;
+            }
+
             SoundManager.instance.StopAllMusic();
 
             if(GameObject.Find("ScoreManager") != null)
@@ -97,7 +103,8 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
             if(Input.anyKey)
             {
                 checkNextScene();
-                SceneManager.LoadScene("Level" + nextScene);    
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                //SceneManager.LoadScene("Level" + nextScene);    
             }
         }
 

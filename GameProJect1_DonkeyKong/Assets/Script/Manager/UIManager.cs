@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject startBlinkingText;
     [SerializeField] TMP_Text topFiveScoreRank_Text;
     [SerializeField][Range(0,100)] float blinkingTime;
+    public bool canUpdateText = true;
 
     private void Start() 
     {
@@ -30,13 +31,9 @@ public class UIManager : MonoBehaviour
 
     private void Update() 
     {
+        updateText();
         if(topFiveScoreRank_Text)
             showTopFive();
-    }
-
-    void FixedUpdate()
-    {
-        updateText();
     }
 
     private void showTopFive()
@@ -110,16 +107,18 @@ public class UIManager : MonoBehaviour
     {
         int level = checkDiff();
 
-        if(FindObjectOfType<CollectItem_Player>() && GameManager.instance.state == GameManager._state.playing)
+        if(FindObjectOfType<CollectItem_Player>() && canUpdateText)
         {
             CollectItem_Player player = FindObjectOfType<CollectItem_Player>();
             int scoreSum = GameManager.instance.score + player.playerScore;
             score_Text.text = scoreSum.ToString();
         }
-        else //error is when win time scale will be zero and this method doesn't update
+        else if(!canUpdateText)
         {
             score_Text.text = GameManager.instance.score.ToString();
         }
+        else
+            score_Text.text = GameManager.instance.score.ToString();
 
         topScore_Text.text = "HIGH SCORE \n" + GameManager.instance.topScore.ToString();
         if(bonusScore_Text != null)

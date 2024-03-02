@@ -10,9 +10,9 @@ public class GUIButtonTest : MonoBehaviour
 
     private void Update() 
     {
-        if(Input.GetKey(KeyCode.F1) && !ShowGui)
+        if(Input.GetKeyDown(KeyCode.F1) && !ShowGui)
             ShowGui = true;
-        else if(Input.GetKey(KeyCode.F1) && ShowGui)
+        else if(Input.GetKeyDown(KeyCode.F1) && ShowGui)
             ShowGui = false;
         if(GameObject.FindGameObjectWithTag("Player") != null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();  
@@ -22,7 +22,7 @@ public class GUIButtonTest : MonoBehaviour
 
     void OnGUI() 
     {
-        
+        GUILayout.BeginArea(new Rect(450,1000,150,150));
         if(ShowGui)
         {
             if (GUILayout.Button("Win"))
@@ -39,5 +39,6 @@ public class GUIButtonTest : MonoBehaviour
                 }
             }
         }
+        GUILayout.EndArea();
     }
 }

@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class BarrelHolder : MonoBehaviour , IDestoryable
+public class BarrelHolder : MonoBehaviour , IDamageable
 {
     [SerializeField] BarrelTypeScriptable barrelType;
     BarrelRollType rollType;
@@ -13,10 +13,12 @@ public class BarrelHolder : MonoBehaviour , IDestoryable
     [SerializeField] private List<Transform> setDirection;
     private bool playerHaveCross = false; 
     public int score = 100;
+    UIPopUpScore popUpScoreUI;
 
 
     private void Start() 
     {
+        popUpScoreUI = FindAnyObjectByType<UIPopUpScore>();
         rollType = GetComponent<BarrelRollType>();
         getDir();
     }
@@ -32,6 +34,8 @@ public class BarrelHolder : MonoBehaviour , IDestoryable
                 {
                     playerHaveCross = true;
                     CollectItem_Player player = hit.collider.GetComponent<CollectItem_Player>();
+                    // instantiate ui score
+                    popUpScoreUI.Popup(gameObject.transform,Vector3.zero,score,1f);
                     player.IncreaseScore(score,"Jump ON");          
                     //GameManager.instance.IncreaseScore(score,"Jump ON");
                 }
@@ -86,8 +90,11 @@ public class BarrelHolder : MonoBehaviour , IDestoryable
         }
     }
 
-    public void des(bool destroy)
+    public void takeDamage()
     {
-
+        //Play vfx
+        // play score ui
+        popUpScoreUI.Popup(gameObject.transform,Vector3.zero,score,1f);
+        Destroy(gameObject);
     }
 }

@@ -29,12 +29,14 @@ public class SpawnBarrel : MonoBehaviour
     public void startSpawn()
     {
         //fix start time 
-        Invoke("startFirstSpawn",animationStartDelay);
+        //Invoke("startFirstSpawn",animationStartDelay);
+        startFirstSpawn();
         //StartCoroutine(startSpawnDelay());
     }
 
     void startFirstSpawn()
     {
+        kongAnimation(nextBarrelNum); //add animation
         Instantiate(barrelType[0],transform.position,barrelType[0].transform.rotation);
         StartCoroutine(delay());
     }
@@ -54,7 +56,10 @@ public class SpawnBarrel : MonoBehaviour
     private void Update() 
     {
         if(canSpawn && startSpawner)
+        {
+            kongAnimation(nextBarrelNum); //add animation
             spawner = StartCoroutine(delaySpawn(barrelType[nextBarrelNum]));
+        }
         else if(!startSpawner || player.isDead)
         {
             if(spawner != null) 
@@ -66,7 +71,7 @@ public class SpawnBarrel : MonoBehaviour
 
     IEnumerator delaySpawn(GameObject barrel)
     {
-        //Debug.Log(barrel.name);
+        // add animation
         Instantiate(barrel,transform.position,barrel.transform.rotation);
         rndNum = Random.Range(0f,1f);
         canSpawn = false;
@@ -89,5 +94,24 @@ public class SpawnBarrel : MonoBehaviour
             nextBarrelNum = 1;
         }
 
+    }
+    
+    // use switch for select animation
+    void kongAnimation(int barrelType)
+    {
+        switch(barrelType)
+        {
+            case 1:
+                Debug.Log("Play animation 1");
+                break;
+            case 2:
+                Debug.Log("Play animation 2");
+                break;
+            case 3:
+                Debug.Log("Play animation 3");
+                break;
+            default:
+                break;
+        }
     }
 }

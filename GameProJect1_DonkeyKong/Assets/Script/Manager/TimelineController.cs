@@ -7,38 +7,37 @@ using UnityEngine.SceneManagement;
 
 public class TimelineController : MonoBehaviour
 {
-    [SerializeField] PlayableDirector startCutScene; //receive bool that check if startCutScene Had play then dont play
     [SerializeField] PlayableDirector endCutScene;
 
-    private void Awake() 
-    {
-        //if(!GameManager.instance.CutSceneHasPlay) //if win or lose cutSceneHas play is false
-        startCutScene.Play();
-        // CutSceneHasPlay = true;
-    }
-
-    //when 
     public void endedScene()
     {
-        if(GameManager.instance.state == GameManager._state.win)
-            endCutScene.Play();
+        if(endCutScene)
+        {
+            if(GameManager.instance.state == GameManager._state.win)
+                endCutScene.Play();
+        }
     }
 
     // go to summary score scene
-    public void toCutScene()
+    public void ToCutScene()
     {
-        setTimeToOne();
+        SetTimeToOne();
         SceneManager.LoadScene("CutScene");
         ScriptSceneManager.instance._CanPlayMusic = true;
         GameManager.instance.state = GameManager._state.playing;
     }
 
-    public void setTimeToZero()
+    public void ToNextLevel()
+    {
+        SceneManager.LoadScene("Level" + ScriptSceneManager.instance.nextScene);    
+    }
+
+    public void SetTimeToZero()
     {
         Time.timeScale = 0;
     }
 
-    public void setTimeToOne()
+    private void SetTimeToOne()
     {
         Time.timeScale = 1;
     }

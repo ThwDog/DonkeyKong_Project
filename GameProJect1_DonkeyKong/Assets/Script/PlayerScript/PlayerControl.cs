@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController),typeof(Controller))]
-public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
+public class PlayerControl : MonoBehaviour , IDamageable
 {
     public static PlayerControl _instance;
     public static PlayerControl instance{get{return _instance;}}
@@ -45,6 +45,7 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
     [Header("player")]
     [SerializeField]private bool _isDead = false;
     internal bool canTakeDamage = true;
+
     public bool isDead
     {
         get{return _isDead;}
@@ -233,14 +234,6 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
         //else inputCon.gainController();
     }
 
-    public void des(bool destroy)
-    {
-        if(destroy)
-        {
-            Debug.Log("player Dead");
-        }
-    }
-
     void fallDamage()
     {
         float fallDis = startOfFall - transform.position.y;
@@ -296,7 +289,7 @@ public class PlayerControl : MonoBehaviour , IDestoryable , IDamageable
 
     IEnumerator revive()
     {
-        //play animation dead
+        //play animation dead use unscaled time
         Debug.Log("Dead");
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(2.0f);
