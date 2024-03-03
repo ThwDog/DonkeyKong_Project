@@ -104,6 +104,7 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
             {
                 checkNextScene();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                GameManager.instance.state = GameManager._state.playing;
                 //SceneManager.LoadScene("Level" + nextScene);    
             }
         }
@@ -188,6 +189,8 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
     {
         Debug.Log("ToMain");
         SceneManager.LoadScene("MainMenu");
+        GameManager.instance.state = GameManager._state.playing;
+        win = false;
     }
 
     void checkCurrentScene()

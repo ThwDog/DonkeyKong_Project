@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,14 @@ public class SaveAndLoadScore : SingletonClass<SaveAndLoadScore>
     [SerializeField] string filename;
     internal List<SaveHighScoreData> saveScore = new List<SaveHighScoreData>();
    [SerializeField] internal List<int> TopScoreSortList = new List<int>();
+
+    public override void Awake() 
+    {
+        base.Awake();
+        //if folder doesn't exit create path
+        if (!System.IO.Directory.Exists(Application.dataPath + "/SaveScoreFolder" ))
+            AssetDatabase.CreateFolder(Application.dataPath , "/SaveScoreFolder" );
+    }
 
     private void Start() 
     {
