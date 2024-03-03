@@ -41,7 +41,6 @@ public class GameManager : SingletonClass<GameManager>
     public void _reset()
     {
         ScriptSceneManager.instance._CanPlayMusic = true;
-
         _LP = 3;
         score = 0;
         lose = false;
@@ -87,9 +86,9 @@ public class GameManager : SingletonClass<GameManager>
             if(state == _state.win)
             {
                 SaveAndLoadScore.instance.addToList(score);
+                Debug.Log(score);
                 _reset();
                 //ScriptSceneManager.instance.toMainMenu();
-                sceneManager.win = false;
                 Debug.Log("Win");
             }
         }

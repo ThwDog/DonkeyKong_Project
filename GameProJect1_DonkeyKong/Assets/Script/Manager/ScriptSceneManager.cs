@@ -100,6 +100,7 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
 
         if(_scene == scene.mainMenu)
         {
+            win = false;
             if(Input.anyKey)
             {
                 checkNextScene();
@@ -189,8 +190,6 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
     {
         Debug.Log("ToMain");
         SceneManager.LoadScene("MainMenu");
-        GameManager.instance.state = GameManager._state.playing;
-        win = false;
     }
 
     void checkCurrentScene()

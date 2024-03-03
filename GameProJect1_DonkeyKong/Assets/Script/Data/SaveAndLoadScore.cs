@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +15,10 @@ public class SaveAndLoadScore : SingletonClass<SaveAndLoadScore>
         base.Awake();
         //if folder doesn't exit create path
         if (!System.IO.Directory.Exists(Application.dataPath + "/SaveScoreFolder" ))
-            AssetDatabase.CreateFolder(Application.dataPath , "/SaveScoreFolder" );
+        {
+            System.IO.Directory.CreateDirectory(Application.dataPath + "/SaveScoreFolder");
+            System.IO.File.Create(Application.dataPath + "/SaveScoreFolder/" +filename);
+        }
     }
 
     private void Start() 
