@@ -7,6 +7,7 @@ public class GUIButtonTest : MonoBehaviour
 {
     public bool ShowGui;
     PlayerControl player;
+    bool _pause = false;
 
     private void Update() 
     {
@@ -27,6 +28,27 @@ public class GUIButtonTest : MonoBehaviour
         {
             if (GUILayout.Button("Win"))
                 GameManager.instance.state = GameManager._state.win;
+            if (GUILayout.Button("Exit Game"))
+                Application.Quit();
+            
+            
+
+            string pauseMenu = _pause? "Resume":"Pause"; 
+
+            if(GUILayout.Button(pauseMenu))
+            {
+                if(!_pause)
+                {
+                    _pause = true;
+                    Time.timeScale = 0f;
+                }
+                else
+                {
+                    _pause = false;
+                    Time.timeScale = 1;
+                }
+            }
+
             if(player != null)
             {
                 string takeDamage = player.canTakeDamage? "Can't Take Damage" : "Can Take Damage";

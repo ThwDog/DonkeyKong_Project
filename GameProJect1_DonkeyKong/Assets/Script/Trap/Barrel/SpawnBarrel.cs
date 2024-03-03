@@ -8,15 +8,18 @@ public class SpawnBarrel : MonoBehaviour
     [SerializeField] List<GameObject> barrelType;
     [SerializeField][Range(1,10)] float spawnRate;
     [SerializeField][Range(1,10)] float animationStartDelay;
+    [SerializeField] Transform spawnPosition;
     bool canSpawn = true;
     bool startSpawner;
     private float rndNum;
     private int nextBarrelNum = 1;
     Coroutine spawner;
     private PlayerControl player;
+    private Animator anim;
 
     private void OnEnable() 
     {
+        anim = GetComponentInChildren<Animator>();
         EventsBus.Subscribe(GameManager._state.playing,startSpawn);    
  
     }
@@ -36,8 +39,10 @@ public class SpawnBarrel : MonoBehaviour
 
     void startFirstSpawn()
     {
-        kongAnimation(nextBarrelNum); //add animation
-        Instantiate(barrelType[0],transform.position,barrelType[0].transform.rotation);
+        //kongAnimation(nextBarrelNum); //add animation
+        anim.SetTrigger("Barrel01");
+
+        Instantiate(barrelType[0],spawnPosition.position,barrelType[0].transform.rotation);
         StartCoroutine(delay());
     }
 
@@ -72,7 +77,7 @@ public class SpawnBarrel : MonoBehaviour
     IEnumerator delaySpawn(GameObject barrel)
     {
         // add animation
-        Instantiate(barrel,transform.position,barrel.transform.rotation);
+        Instantiate(barrel,spawnPosition.position,barrel.transform.rotation);
         rndNum = Random.Range(0f,1f);
         canSpawn = false;
         yield return new WaitForSeconds(spawnRate);
@@ -102,12 +107,15 @@ public class SpawnBarrel : MonoBehaviour
         switch(barrelType)
         {
             case 1:
+                anim.SetTrigger("Barrel02");
                 Debug.Log("Play animation 1");
                 break;
             case 2:
+                anim.SetTrigger("Barrel02");
                 Debug.Log("Play animation 2");
                 break;
             case 3:
+                anim.SetTrigger("Barrel01");
                 Debug.Log("Play animation 3");
                 break;
             default:

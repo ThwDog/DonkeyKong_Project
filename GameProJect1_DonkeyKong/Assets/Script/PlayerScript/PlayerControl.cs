@@ -47,6 +47,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
     internal Animator anim;
     [SerializeField]private bool _isDead = false;
     internal bool canTakeDamage = true;
+    private CollectItem_Player item_Player;
 
     public bool isDead
     {
@@ -70,6 +71,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
         player = GetComponent<CharacterController>();
         playerCollider = GetComponent<Collider>();
         anim = GetComponentInChildren<Animator>();
+        item_Player = GetComponent<CollectItem_Player>();
         inputCon = Controller.instance;   
         //Cursor.visible = false;
     }
@@ -299,6 +301,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
             SoundManager.instance.StopAllMusic();
             anim.updateMode = AnimatorUpdateMode.UnscaledTime;
             //player dead play animation wait and re scene
+            item_Player.resetBeforeHaveWeapon();
             isDead = true;
             anim.SetBool("Dead",isDead);
 

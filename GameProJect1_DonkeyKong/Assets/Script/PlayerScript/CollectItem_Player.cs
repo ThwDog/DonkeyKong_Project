@@ -73,7 +73,7 @@ public class CollectItem_Player : MonoBehaviour
         }
     }
 
-    void resetBeforeHaveWeapon()
+    public void resetBeforeHaveWeapon()
     {
         control.gainJumpKey();
         hammer.SetActive(false);//Just For show Pls Delete 
