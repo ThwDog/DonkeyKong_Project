@@ -1,0 +1,409 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Lower
+  m_Mask: 01000000000000000000000001000000010000000000000000000000000000000000000001000000010000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Controller
+    m_Weight: 1
+  - m_Path: Controller/CT_Box
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Left/CT_KneeLeft
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Left/joint6
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Left/joint6/joint3
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Left/joint6/joint3/ikHandle6
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Left/joint6/joint3/joint4
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Left/joint6/joint3/joint4/ikHandle5
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Left/joint6/joint3/joint4/joint5
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Left/joint6/joint3/joint4/joint5/ikHandle8
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Right/CT_KneeRight
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Right/joint2
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Right/joint2/joint3
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Right/joint2/joint3/ikHandle3
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Right/joint2/joint3/joint4
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Right/joint2/joint3/joint4/ikHandle2
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Right/joint2/joint3/joint4/joint5
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Foot_Right/joint2/joint3/joint4/joint5/ikHandle7
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Hip
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Collar_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Collar_Left/CT_Shoulder_Left______
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Collar_Left/CT_Shoulder_Left______/CT_Elbow_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Collar_Left/CT_Shoulder_Left______/CT_Elbow_Left/CT_Hand_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Collar_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Collar_Right/CT_Shoulder_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Collar_Right/CT_Shoulder_Right/CT_Elbow_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Collar_Right/CT_Shoulder_Right/CT_Elbow_Right/CT_Hand_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Collar_Right/CT_Shoulder_Right/CT_Elbow_Right/CT_Hand_Right/CT_Box1
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_Dead_Eye_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_Dead_Eye_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_eyebrow_Center
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_eyebrow_Center/CT_EyeBrow_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_eyebrow_Center/CT_EyeBrow_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_EyeConLeft
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_EyeConRight
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_EYelow_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_EYeLow_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_EYeTop_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_EYeTop_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_LipLeft
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_LipLow
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_LipRight
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_LipTop
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_Moustachev_L1
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_Moustachev_L2
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_Moustachev_L3
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_Moustachev_R1
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_Moustachev_R2
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/CT_Moustachev_R3
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/eye_Lids_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/eye_Lids_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/EyeLashLeft
+    m_Weight: 1
+  - m_Path: Controller/CT_Box/CT_Root/CT_Spine/CT_Cheats/CT_Neck/CT_Head/EyeLashRight
+    m_Weight: 1
+  - m_Path: Controller/CT_IK_Hand_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_IK_Hand_Left/CT_Main_Elbow_Left
+    m_Weight: 1
+  - m_Path: Controller/CT_IK_Hand_Right
+    m_Weight: 1
+  - m_Path: Controller/CT_IK_Hand_Right/CT_Main_Elbow_Right
+    m_Weight: 1
+  - m_Path: Controller/FK_LeftShoulder
+    m_Weight: 1
+  - m_Path: Controller/FK_LeftShoulder/FK_LeftElbow
+    m_Weight: 1
+  - m_Path: Controller/FK_LeftShoulder/FK_LeftElbow/FK_LeftElbow
+    m_Weight: 1
+  - m_Path: Controller/FK_LeftShoulder/FK_LeftElbow/FK_LeftElbow/FK_LeftHand
+    m_Weight: 1
+  - m_Path: Controller/FK_LeftShoulder/FK_LeftElbow/FK_LeftElbow/FK_LeftHand/FK_LeftIndexFinger
+    m_Weight: 1
+  - m_Path: Controller/FK_LeftShoulder/FK_LeftElbow/FK_LeftElbow/FK_LeftHand/FK_LeftMiddleFinger
+    m_Weight: 1
+  - m_Path: Controller/FK_LeftShoulder/FK_LeftElbow/FK_LeftElbow/FK_LeftHand/FK_LeftPinkyFinger
+    m_Weight: 1
+  - m_Path: Controller/FK_LeftShoulder/FK_LeftElbow/FK_LeftElbow/FK_LeftHand/FK_LeftRingFinger
+    m_Weight: 1
+  - m_Path: Controller/FK_LeftShoulder/FK_LeftElbow/FK_LeftElbow/FK_LeftHand/FK_LeftThumb
+    m_Weight: 1
+  - m_Path: Controller/FK_RightShoulder
+    m_Weight: 1
+  - m_Path: Controller/FK_RightShoulder/FK_RightElbow
+    m_Weight: 1
+  - m_Path: Controller/FK_RightShoulder/FK_RightElbow/FK_RightElbow
+    m_Weight: 1
+  - m_Path: Controller/FK_RightShoulder/FK_RightElbow/FK_RightElbow/FK_RightHand
+    m_Weight: 1
+  - m_Path: Controller/FK_RightShoulder/FK_RightElbow/FK_RightElbow/FK_RightHand/FK_RightIndexFinger
+    m_Weight: 1
+  - m_Path: Controller/FK_RightShoulder/FK_RightElbow/FK_RightElbow/FK_RightHand/FK_RightMiddleFinger
+    m_Weight: 1
+  - m_Path: Controller/FK_RightShoulder/FK_RightElbow/FK_RightElbow/FK_RightHand/FK_RightPinkyFinger
+    m_Weight: 1
+  - m_Path: Controller/FK_RightShoulder/FK_RightElbow/FK_RightElbow/FK_RightHand/FK_RightRingFinger
+    m_Weight: 1
+  - m_Path: Controller/FK_RightShoulder/FK_RightElbow/FK_RightElbow/FK_RightHand/FK_RightThumb
+    m_Weight: 1
+  - m_Path: Controller/IK_LeftShoulder
+    m_Weight: 1
+  - m_Path: Controller/IK_LeftShoulder/IK_LeftElbow
+    m_Weight: 1
+  - m_Path: Controller/IK_LeftShoulder/IK_LeftElbow/IK_LeftElbow
+    m_Weight: 1
+  - m_Path: Controller/IK_LeftShoulder/IK_LeftElbow/IK_LeftElbow/IK_LeftHand
+    m_Weight: 1
+  - m_Path: Controller/IK_LeftShoulder/IK_LeftElbow/IK_LeftElbow/IK_LeftHand/IK_LeftIndexFinger
+    m_Weight: 1
+  - m_Path: Controller/IK_LeftShoulder/IK_LeftElbow/IK_LeftElbow/IK_LeftHand/IK_LeftMiddleFinger
+    m_Weight: 1
+  - m_Path: Controller/IK_LeftShoulder/IK_LeftElbow/IK_LeftElbow/IK_LeftHand/IK_LeftPinkyFinger
+    m_Weight: 1
+  - m_Path: Controller/IK_LeftShoulder/IK_LeftElbow/IK_LeftElbow/IK_LeftHand/IK_LeftRingFinger
+    m_Weight: 1
+  - m_Path: Controller/IK_LeftShoulder/IK_LeftElbow/IK_LeftElbow/IK_LeftHand/IK_LeftThumb
+    m_Weight: 1
+  - m_Path: Controller/IK_RightShoulder
+    m_Weight: 1
+  - m_Path: Controller/IK_RightShoulder/IK_RightElbow
+    m_Weight: 1
+  - m_Path: Controller/IK_RightShoulder/IK_RightElbow/IK_RightElbow
+    m_Weight: 1
+  - m_Path: Controller/IK_RightShoulder/IK_RightElbow/IK_RightElbow/IK_RightHand
+    m_Weight: 1
+  - m_Path: Controller/IK_RightShoulder/IK_RightElbow/IK_RightElbow/IK_RightHand/IK_RightIndexFinger
+    m_Weight: 1
+  - m_Path: Controller/IK_RightShoulder/IK_RightElbow/IK_RightElbow/IK_RightHand/IK_RightMiddleFinger
+    m_Weight: 1
+  - m_Path: Controller/IK_RightShoulder/IK_RightElbow/IK_RightElbow/IK_RightHand/IK_RightPinkyFinger
+    m_Weight: 1
+  - m_Path: Controller/IK_RightShoulder/IK_RightElbow/IK_RightElbow/IK_RightHand/IK_RightRingFinger
+    m_Weight: 1
+  - m_Path: Controller/IK_RightShoulder/IK_RightElbow/IK_RightElbow/IK_RightHand/IK_RightThumb
+    m_Weight: 1
+  - m_Path: Controller/ikHandle9
+    m_Weight: 1
+  - m_Path: Controller/ikHandle10
+    m_Weight: 1
+  - m_Path: Controller/Root
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/CenterHead_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/CenterMouthLow
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/CenterMouthTop
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Death_Eye__Left
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Death_Eye__Right
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Eye_L
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Eye_R
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Eyebrow_Left
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Eyebrow_Right
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/EyeLow_Left
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/EyeLow_Right
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/EyeTop_Left
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/EyeTop_Right
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Moustaches_1L
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Moustaches_1R
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Moustaches_2L
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Moustaches_2R
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Moustaches_Left
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Moustaches_Right
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Mouth_L
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/CenterNeck/CenterHead/Face/Mouth_R
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftIndexFinger
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftIndexFinger/LeftIndexFinger1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftIndexFinger/LeftIndexFinger1/LeftIndexFinger2
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftIndexFinger/LeftIndexFinger1/LeftIndexFinger2/LeftIndexFinger_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftMiddleFinger
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftMiddleFinger/LeftMiddleFinger1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftMiddleFinger/LeftMiddleFinger1/LeftMiddleFinger2
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftMiddleFinger/LeftMiddleFinger1/LeftMiddleFinger2/LeftMiddleFinger_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftPinkyFinger
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftPinkyFinger/LeftPinkyFinger1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftPinkyFinger/LeftPinkyFinger1/LeftPinkyFinger2
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftPinkyFinger/LeftPinkyFinger1/LeftPinkyFinger2/LeftPinkyFinger_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftRingFinger
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftRingFinger/LeftRingFinger1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftRingFinger/LeftRingFinger1/LeftRingFinger2
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftRingFinger/LeftRingFinger1/LeftRingFinger2/LeftRingFinger_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftThumb
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftThumb/LeftThumb_1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/LeftCollar/LeftShoulder/LeftElbow/LeftElbow1/LeftHand/LeftThumb/LeftThumb_1/LeftThumb_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightIndexFinger
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightIndexFinger/RightIndexFinger1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightIndexFinger/RightIndexFinger1/RightIndexFinger2
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightIndexFinger/RightIndexFinger1/RightIndexFinger2/RightIndexFinger_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightMiddleFinger
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightMiddleFinger/RightMiddleFinger1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightMiddleFinger/RightMiddleFinger1/RightMiddleFinger2
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightMiddleFinger/RightMiddleFinger1/RightMiddleFinger2/RightMiddleFinger_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightPinkyFinger
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightPinkyFinger/RightPinkyFinger1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightPinkyFinger/RightPinkyFinger1/RightPinkyFinger2
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightPinkyFinger/RightPinkyFinger1/RightPinkyFinger2/RightPinkyFinger_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightRingFinger
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightRingFinger/RightRingFinger1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightRingFinger/RightRingFinger1/RightRingFinger2
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightRingFinger/RightRingFinger1/RightRingFinger2/RightRingFinger_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightThumb
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightThumb/RightThumb_1
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/CenterSpine/CenterCheat/RightCollar/RightShoulder/RightElbow/RightElbow1/RightHand/RightThumb/RightThumb_1/RightThumb_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/LeftHip
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/LeftHip/LeftKnee
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/LeftHip/LeftKnee/LeftFoot
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/LeftHip/LeftKnee/LeftFoot/LeftToe
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/LeftHip/LeftKnee/LeftFoot/LeftToe/LeftToe_END
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/RightHip
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/RightHip/RightKnee
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/RightHip/RightKnee/RightFoot
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/RightHip/RightKnee/RightFoot/RightToe
+    m_Weight: 1
+  - m_Path: Controller/Root/CenterRoot/RightHip/RightKnee/RightFoot/RightToe/RightToe_END
+    m_Weight: 1
+  - m_Path: Rig
+    m_Weight: 1
+  - m_Path: use
+    m_Weight: 1
+  - m_Path: use/Eye_Dead_Left
+    m_Weight: 1
+  - m_Path: use/Eye_Dead_Right
+    m_Weight: 1
+  - m_Path: use/Eye_Left
+    m_Weight: 1
+  - m_Path: use/eye_Right
+    m_Weight: 1
+  - m_Path: use/Eyebrow2
+    m_Weight: 1
+  - m_Path: use/Eyebrow4
+    m_Weight: 1
+  - m_Path: use/HighpolyUse1
+    m_Weight: 1
+  - m_Path: use/Moustache_use
+    m_Weight: 1
