@@ -7,7 +7,7 @@ public class ElevatorPadScript : MonoBehaviour
     ElevatorScript elevator;
     public float speed;
     [SerializeField]Rigidbody rb;
-    [HideInInspector]public Transform target;
+    [HideInInspector]public Vector3 target;
     public bool playerStay = false;
 
     private void Awake() 
@@ -19,7 +19,7 @@ public class ElevatorPadScript : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
         if(!elevator.start)
             speed = 0;
     }

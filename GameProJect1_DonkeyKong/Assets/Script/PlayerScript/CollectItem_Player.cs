@@ -27,6 +27,7 @@ public class CollectItem_Player : MonoBehaviour
     private void Update() 
     {
         hammerHoldCoroutine = StartCoroutine(_HolderWeapon(holdSec));
+        player.anim.SetBool("HaveHammer",haveWeapon);
         if(Input.GetKeyDown(KeyCode.Z) && haveWeapon)
         {
             haveWeapon = false;

@@ -19,16 +19,7 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'CenterCheat' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'RightCollar' has translation
-      animation that will be discarded.\n\t'RightShoulder' has translation animation
-      that will be discarded.\n\t'RightElbow1' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'LeftCollar' has translation
-      animation that will be discarded.\n\t'LeftShoulder' has translation animation
-      that will be discarded.\n\t'LeftElbow1' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -1015,8 +1006,8 @@ ModelImporter:
       name: Down
       takeName: Take 001
       internalID: -6788666626592393668
-      firstFrame: 99
-      lastFrame: 121
+      firstFrame: 100
+      lastFrame: 119
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

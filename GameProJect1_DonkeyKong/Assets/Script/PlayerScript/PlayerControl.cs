@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
     private Collider[] ladderCollider;
 
     [Header("movement")]
+    [SerializeField] int checkLadderDownHeight;
     [SerializeField]float speed;
     [SerializeField]float climbSpeed;
     private float verticalSpeed;
@@ -43,6 +44,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
     private bool canWalk = true;
 
     [Header("player")]
+    internal Animator anim;
     [SerializeField]private bool _isDead = false;
     internal bool canTakeDamage = true;
 
@@ -52,7 +54,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
         set{_isDead = value;}
     }
 
-    bool isFalling
+    bool isFalling // check if fall
     {
         get{return !isGrounded & player.velocity.y < 0;}
     }
@@ -67,6 +69,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
     {
         player = GetComponent<CharacterController>();
         playerCollider = GetComponent<Collider>();
+        anim = GetComponentInChildren<Animator>();
         inputCon = Controller.instance;   
         //Cursor.visible = false;
     }
@@ -86,7 +89,14 @@ public class PlayerControl : MonoBehaviour , IDamageable
 
     private void FixedUpdate() 
     {
-        //checkRay();
+        // if(!isGrounded & player.velocity.y < 0)
+        //     anim.SetBool("Fall",true);
+        // else if(!canJump)
+        // {
+        //     anim.SetBool("Fall",false);
+        // }
+        // else anim.SetBool("Fall",false);
+
         checkGround();
         move();
         isGrounded = ground();
@@ -107,6 +117,9 @@ public class PlayerControl : MonoBehaviour , IDamageable
         {
             if(inputCon.movement.x != 0 && canWalk && isGrounded)
                 StartCoroutine(delayWalk());
+
+            anim.SetFloat("Speed",inputCon.movement.x); // animation walk to idle
+
             Vector3 move = new Vector3(inputCon.movement.x,0,0);
             //only side move
             if(move.sqrMagnitude > 1.0f)
@@ -158,6 +171,9 @@ public class PlayerControl : MonoBehaviour , IDamageable
                 verticalSpeed = -current_GValue * stickingGravityPro;
                 if (inputCon.jump && isGrounded && canJump)
                 {
+                    
+                    //anim.SetTrigger("Jump");
+
                     verticalSpeed = j_force;
                     StartCoroutine(jumpDelay());
                 }
@@ -175,7 +191,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
     private void climb()
     {  
         //ladderCollider = Physics.OverlapBox(gameObject.transform.position - new Vector3 (0,2,0), transform.localScale / 2, Quaternion.identity,LayerMask.GetMask("Ladder"));
-        ladderCollider = Physics.OverlapSphere(gameObject.transform.position - new Vector3 (0,3,0), 1,LayerMask.GetMask("Ladder"));
+        ladderCollider = Physics.OverlapSphere(gameObject.transform.position - new Vector3 (0,checkLadderDownHeight,0), 1,LayerMask.GetMask("Ladder"));
         if(ladderCollider.Length >= 1)
         {    
             isLadderDown = true;
@@ -209,12 +225,13 @@ public class PlayerControl : MonoBehaviour , IDamageable
         Gizmos.color = Color.red;
         //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
         //Gizmos.DrawCube (gameObject.transform.position - new Vector3 (0,2,0), transform.localScale);
-        Gizmos.DrawSphere(gameObject.transform.position - new Vector3 (0,3,0), 1);
+        Gizmos.DrawSphere(gameObject.transform.position - new Vector3 (0,checkLadderDownHeight,0), 1);
     }
 
     IEnumerator jumpDelay()
     {
         canJump = false;
+        
         SoundManager.instance.PlaySfx("Jump");
         yield return new WaitForSeconds(input_Delay);
         canJump = true;
@@ -237,6 +254,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
     void fallDamage()
     {
         float fallDis = startOfFall - transform.position.y;
+        //Debug.Log(fallDis);
         if(fallDis > minFall)
         {
             takeDamage();
@@ -279,11 +297,15 @@ public class PlayerControl : MonoBehaviour , IDamageable
         {
             GameManager.instance._LP--;
             SoundManager.instance.StopAllMusic();
+            anim.updateMode = AnimatorUpdateMode.UnscaledTime;
             //player dead play animation wait and re scene
             isDead = true;
-            
+            anim.SetBool("Dead",isDead);
+
+            Debug.Log("animation finish");
             if(GameManager.instance._LP != 0 && isDead)
-                 StartCoroutine(revive());
+                StartCoroutine(revive());
+            
         }
     }
 
@@ -291,10 +313,12 @@ public class PlayerControl : MonoBehaviour , IDamageable
     {
         //play animation dead use unscaled time
         Debug.Log("Dead");
+        transform.rotation = new Quaternion(0,180,0,0);// rote because animation should look like this
         Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(2.0f);
+        yield return new WaitForSecondsRealtime(3.0f);//dead delay time
         Debug.Log("Re");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        anim.updateMode = AnimatorUpdateMode.Normal;
         Time.timeScale = 1;
         isDead = false;
     }

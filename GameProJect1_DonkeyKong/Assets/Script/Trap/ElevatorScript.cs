@@ -20,23 +20,22 @@ public class ElevatorScript : MonoBehaviour
     [Tooltip("distance Of pad")]
     [SerializeField][Range(0,100)] float dis;//distance Form each pad
     [SerializeField] float padSpeed;
+    [SerializeField] Vector3 spawnPosi;
     //public List<GameObject> padCount;
 
     bool hasSpawn = false;
     PlayerControl player;
     ElevatorBase _base;
-    GameManager gameManager;
 
     private void Awake() 
     {
         _base = GetComponentInChildren<ElevatorBase>();    
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update() 
     {
-        if(_base.playerHasTouch || gameManager.state != GameManager._state.playing)
+        if(_base.playerHasTouch || GameManager.instance.state != GameManager._state.playing)
         {
             start = false;
             player.takeDamage();
@@ -73,16 +72,17 @@ public class ElevatorScript : MonoBehaviour
     private IEnumerator spawn(GameObject spawner,GameObject target)
     {
 
-        Vector3 _dis = new Vector3(0,1,0); 
+        //Vector3 _dis = new Vector3(1,1,0); 
         if(!hasSpawn)
         {
-            ElevatorPadScript pad = Instantiate(padOBJ,spawner.transform.position + _dis, Quaternion.identity);
+            ElevatorPadScript pad = Instantiate(padOBJ,spawner.transform.position + spawnPosi,padOBJ.gameObject.transform.rotation);
             pad.transform.parent = gameObject.transform;
             pad.speed = padSpeed;
-            pad.target = target.transform;
+            //pad.target = target.transform;
+            pad.target = new Vector3(target.transform.position.x + spawnPosi.x,target.transform.position.y,target.transform.position.z);
             hasSpawn = true;
             //padCount.Add(pad.gameObject);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2.5f);
             hasSpawn = false;
         }
 
