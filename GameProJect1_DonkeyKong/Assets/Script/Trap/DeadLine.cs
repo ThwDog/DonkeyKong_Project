@@ -7,7 +7,7 @@ public class DeadLine : MonoBehaviour
 {
     public enum _lineType
     {
-        WinLine = 1, DeadLine = 2
+        WinLine = 1, DeadLine = 2 , PlayerDeadLine = 3
     }
 
     public _lineType LineType;
@@ -26,8 +26,18 @@ public class DeadLine : MonoBehaviour
             destroyObjLine(other);
         else if(lineTypeNum == 1)
             winLine(other);
+        else if(lineTypeNum == 3)
+            playerDead(other);
     }
 
+    private void playerDead(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            PlayerControl player = other.GetComponent<PlayerControl>();
+            player.takeDamage();
+        } 
+    }
 
     private void destroyObjLine(Collider other)
     {

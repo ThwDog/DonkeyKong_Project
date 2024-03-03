@@ -170,7 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20794e61f40ee404d8113c97ab5e36da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 5
+  enemyType: 0
+  chaseSpeed: 7
+  wayPoint: []
 --- !u!114 &574287920593693903
 MonoBehaviour:
   m_ObjectHideFlags: 0

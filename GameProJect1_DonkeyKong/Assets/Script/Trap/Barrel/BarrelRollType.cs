@@ -104,7 +104,7 @@ public class BarrelRollType : MonoBehaviour
         else
             rb.velocity = new Vector3(0,-transform.position.y / 3,0);
         
-        ladderCollider = Physics.OverlapSphere(gameObject.transform.position - new Vector3 (0,3,0), 1,LayerMask.GetMask("Ladder"));
+        ladderCollider = Physics.OverlapSphere(gameObject.transform.position - new Vector3 (0,3,0), 1,LayerMask.GetMask("Ladder"));//ladder must in layer ladder 
 
         if(ladderCollider.Length >= 1)
         {
@@ -166,7 +166,7 @@ public class BarrelRollType : MonoBehaviour
             hitWall = true;
             _collider.isTrigger = true;
             hitColliderRight = true;
-            Invoke("resetModel",0.5f);
+            Invoke("resetModel",0.7f);
             yield return new WaitForSeconds(0.3f);//change it if barrel not fall
             isClimbing = false;
             hitWall = false;
