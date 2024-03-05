@@ -23,7 +23,7 @@ public class GUIButtonTest : MonoBehaviour
 
     void OnGUI() 
     {
-        GUILayout.BeginArea(new Rect(450,1000,150,150));
+        GUILayout.BeginArea(new Rect(450,950,150,150));
         if(ShowGui)
         {
             if (GUILayout.Button("Win"))
@@ -58,6 +58,10 @@ public class GUIButtonTest : MonoBehaviour
                         player.canTakeDamage = false;
                     else if(!player.canTakeDamage)
                         player.canTakeDamage = true;
+                }
+                if (GUILayout.Button("Player Take Damage"))
+                {
+                    player.takeDamage();
                 }
             }
         }

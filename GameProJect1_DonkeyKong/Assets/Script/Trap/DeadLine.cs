@@ -46,6 +46,11 @@ public class DeadLine : MonoBehaviour
             Debug.Log("Destroy " + other.name);
             Destroy(other.gameObject);   
         } 
+        if(other.gameObject.CompareTag("Player"))
+        {
+            PlayerControl player = other.GetComponent<PlayerControl>();
+            player.takeDamage();
+        } 
     }
 
     private void winLine(Collider other)

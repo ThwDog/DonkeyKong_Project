@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SaveAndLoadScore : SingletonClass<SaveAndLoadScore>
 {
-    [SerializeField] int id = 1;
+    public int id = 1;
     [SerializeField] string filename;
     internal List<SaveHighScoreData> saveScore = new List<SaveHighScoreData>();
    [SerializeField] internal List<int> TopScoreSortList = new List<int>();

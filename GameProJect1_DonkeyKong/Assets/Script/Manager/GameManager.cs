@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -86,7 +87,7 @@ public class GameManager : SingletonClass<GameManager>
             if(state == _state.win)
             {
                 SaveAndLoadScore.instance.addToList(score);
-                Debug.Log(score);
+                Debug.Log("ID" + SaveAndLoadScore.instance.id +" : "+score);
                 _reset();
                 //ScriptSceneManager.instance.toMainMenu();
                 Debug.Log("Win");
