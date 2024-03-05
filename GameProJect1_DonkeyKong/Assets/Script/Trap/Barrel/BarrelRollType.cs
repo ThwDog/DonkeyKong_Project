@@ -14,7 +14,7 @@ public class BarrelRollType : MonoBehaviour
     [Header("Setting")]
     [SerializeField] float roteSpeed;
     public bool hitPlayer = false;
-    private Collider[] ladderCollider;
+    [SerializeField]private Collider[] ladderCollider;
     private bool isLadderDown;
     private bool canRnd = true;
     private bool isClimbing;
@@ -131,8 +131,9 @@ public class BarrelRollType : MonoBehaviour
                     //Debug.Log("1");
                     if(ladderCollider[0].gameObject.transform.childCount > 0 && canClimbing && !isClimbing)
                     {    
-                        isClimbing = true;
-                        climb();
+                        //isClimbing = true;
+                        Invoke("climb",0.1f);
+                        //climb();
                     }
                     break;
                 default:
@@ -143,10 +144,12 @@ public class BarrelRollType : MonoBehaviour
 
     void climb()
     {
-        if(isClimbing)
-        {
-            StartCoroutine(ignoreCollision());
-        }
+        // if(isClimbing)
+        // {
+        //     StartCoroutine(ignoreCollision());
+        // }
+        isClimbing = true;
+        StartCoroutine(ignoreCollision());
     }
 
     IEnumerator randomNum()

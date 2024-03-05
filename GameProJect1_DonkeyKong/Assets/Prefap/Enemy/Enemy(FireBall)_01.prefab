@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7354696712953828599}
   - component: {fileID: 574287920593693903}
   m_Layer: 12
-  m_Name: Enemy(FireBall)
+  m_Name: Enemy(FireBall)_01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 5485651705264734234}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3848885813491033682
 MeshFilter:
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db90da25d9d6f6e498214cb19e3c4e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _EnemyType: {fileID: 0}
+  _EnemyType: {fileID: 11400000, guid: 73ef1a52aaa89ba4984789e9ef88a24a, type: 2}
   score: 100
 --- !u!1001 &4373844157029752662
 PrefabInstance:

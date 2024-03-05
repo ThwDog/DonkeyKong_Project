@@ -21,4 +21,22 @@ public class EnemyHolder : MonoBehaviour , IDamageable
         popUpScoreUI.Popup(gameObject.transform,Vector3.zero,score,1f);
         Destroy(gameObject);
     }
+
+    public void checkType(FollowNavigation follow)//set enemy type
+    {
+        var type = _EnemyType.type;
+        
+        switch(type)
+        {
+            case Scriptable_EnemyType.Type.typeOne:
+                follow.enemyType = FollowNavigation._enemyType.FireBall;
+                break;
+            case Scriptable_EnemyType.Type.typeTwo:
+                follow.enemyType = FollowNavigation._enemyType.FireBallType_2;
+                break;
+            case Scriptable_EnemyType.Type.typeThree:
+                follow.enemyType = FollowNavigation._enemyType.FireDuck;
+                break;
+        }
+    }
 }

@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 510806db566994d4eabd5ca64c0d3a85, type: 3}
-  m_Name: FireFox
+  m_Name: FireBall_01
   m_EditorClassIdentifier: 
-  type: 2
   obj: {fileID: 0}
