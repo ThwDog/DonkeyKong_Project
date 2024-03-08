@@ -67,3 +67,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LineType: 1
+  timeStay: 1.5

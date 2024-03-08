@@ -41,19 +41,20 @@ public class DeadLine : MonoBehaviour
 
     private void destroyObjLine(Collider other)
     {
-        if(other.gameObject.layer != 8 || other.gameObject.layer != 6 || other.gameObject.layer != 10)
-        {
-            Debug.Log("Destroy " + other.name);
-            Destroy(other.gameObject);   
-        } 
-        if(other.gameObject.CompareTag("Player"))
-        {
-            PlayerControl player = other.GetComponent<PlayerControl>();
-            player.takeDamage();
-        } 
+        // if(other.gameObject.layer != 8 || other.gameObject.layer != 6 || other.gameObject.layer != 10)
+        // {
+        //        
+        // } 
+        // if(other.gameObject.CompareTag("Player"))
+        // {
+        //     PlayerControl player = other.GetComponent<PlayerControl>();
+        //     player.takeDamage();
+        // } 
+        Debug.Log("Destroy " + other.name);
+        Destroy(other.gameObject);
     }
 
-    private void winLine(Collider other)
+    private void winLine(Collider other) // by touch
     {
         if(other.gameObject.CompareTag("Player"))
         {
@@ -62,10 +63,10 @@ public class DeadLine : MonoBehaviour
         } 
     }
 
-    IEnumerator playWinAnimation()
+    public IEnumerator playWinAnimation()
     {
         //play animation
-        yield return new WaitForSeconds(timeStay);
+        yield return new WaitForSeconds(timeStay);//wait for how long to win
         GameManager.instance.state = GameManager._state.win;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class MoveingFloor : MonoBehaviour
@@ -19,5 +20,11 @@ public class MoveingFloor : MonoBehaviour
         player.Move(dir * pushForce * Time.fixedDeltaTime);
     }
 
-    
+    public void pushObj(GameObject obj , float speed)
+    {
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        Vector3 dir = Direction == direction.right? Vector3.right : Vector3.left;
+        
+        rb.AddForce(dir * (pushForce * speed) * Time.deltaTime);
+    }
 }
