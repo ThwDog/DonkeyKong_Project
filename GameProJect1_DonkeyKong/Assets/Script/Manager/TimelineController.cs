@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class TimelineController : MonoBehaviour
 {
-    [SerializeField] PlayableDirector endCutScene;
+    [SerializeField] PlayableDirector startCutScene; // play when awake
+    [SerializeField] PlayableDirector endCutScene; //play when win 
 
     public void endedScene()
     {

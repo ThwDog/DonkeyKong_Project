@@ -14446,7 +14446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2282296254452601460, guid: 712eb67c87ddf084ab49c782c8e7f075, type: 3}
       propertyPath: timeStay
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3215926733024936142, guid: 712eb67c87ddf084ab49c782c8e7f075, type: 3}
       propertyPath: m_Name
@@ -14837,6 +14837,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 281394310125643606, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
+      propertyPath: barrelType.Array.data[0]
+      value: 
+      objectReference: {fileID: 3263498185222877712, guid: d796efc00b061d043887d6a5495544be, type: 3}
+    - target: {fileID: 281394310125643606, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
+      propertyPath: barrelType.Array.data[1]
+      value: 
+      objectReference: {fileID: 6107590077214759525, guid: cbfdd94f0f2a3bd499be183615f9edab, type: 3}
     - target: {fileID: 1689849028363262869, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
       propertyPath: m_RootOrder
       value: 19

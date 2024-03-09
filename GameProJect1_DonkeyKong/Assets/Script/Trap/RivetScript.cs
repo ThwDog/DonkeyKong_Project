@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class RivetScript : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other) 
     {
         if(other.CompareTag("Player"))
         {
+            CheckWinByRivet rivet = FindAnyObjectByType<CheckWinByRivet>();
             Debug.Log("Boom");
-            Destroy(this.gameObject);        
+            rivet.rivetBoomCount++;
+            gameObject.SetActive(false);
+            // Destroy(this.gameObject);        
         }  
     }
 
