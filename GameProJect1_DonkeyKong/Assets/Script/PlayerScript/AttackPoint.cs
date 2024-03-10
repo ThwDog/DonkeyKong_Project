@@ -52,6 +52,12 @@ public class AttackPoint : MonoBehaviour
                 barrel.takeDamage();
                 //Destroy(other.gameObject);
             }
+            if(other.gameObject.GetComponent<FoodTrayScript>())
+            {
+                FoodTrayScript foodTray = other.GetComponent<FoodTrayScript>();
+                collectItem.IncreaseScore(foodTray.score,"hit food");
+                foodTray.takeDamage();
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnPointScript : MonoBehaviour
@@ -10,7 +11,7 @@ public class SpawnPointScript : MonoBehaviour
     }
 
     [Header("Setting")]
-    public GameObject spawned;
+    public GameObject spawnObj;
     [SerializeField] bool canMutiSpawn;
     [SerializeField] bool canSpawnEnemy;
     public _spawnType spawnType;
@@ -21,7 +22,7 @@ public class SpawnPointScript : MonoBehaviour
     {
         spawnNormal();
         if(canSpawnEnemy)
-            spawnEnemy(spawned);
+            spawnEnemy(spawnObj,gameObject);
     }
 
     public void spawnNormal()
@@ -30,26 +31,26 @@ public class SpawnPointScript : MonoBehaviour
             //Instantiate(spawned, transform.position, Quaternion.identity);
         if(spawnType == _spawnType.normal)
         {
-            if(GameObject.Find(spawned.name) == null)
-                Instantiate(spawned, transform.position, Quaternion.identity);
-            else if(canMutiSpawn & spawned.GetComponent<PlayerControl>() == false)
-                Instantiate(spawned, transform.position, Quaternion.identity);
+            if(GameObject.Find(spawnObj.name) == null)
+                Instantiate(spawnObj, transform.position, Quaternion.identity);
+            else if(canMutiSpawn & spawnObj.GetComponent<PlayerControl>() == false)
+                Instantiate(spawnObj, transform.position, Quaternion.identity);
         }
     }
 
-    public void spawnEnemy(GameObject spawn)
+    public void spawnEnemy(GameObject spawn,GameObject spawnerPosition)
     {
         if(spawnType == _spawnType.enemy && canSpawn)
         {
-            StartCoroutine(spawnDelay(spawn));
+            StartCoroutine(spawnDelay(spawn,spawnerPosition));
             Debug.Log("Spawn Enemy");
         }
     }
 
-    IEnumerator spawnDelay(GameObject spawn)
+    public virtual IEnumerator spawnDelay(GameObject spawn,GameObject spawnerPosition)
     {
         canSpawn = false;
-        Instantiate(spawn,transform.position,Quaternion.identity);
+        Instantiate(spawn,spawnerPosition.transform.position,Quaternion.identity);
         yield return new WaitForSeconds(spawnDelayTime);
         canSpawn = true;
     }

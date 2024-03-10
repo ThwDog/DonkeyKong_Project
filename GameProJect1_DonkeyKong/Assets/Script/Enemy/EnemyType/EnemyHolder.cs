@@ -7,11 +7,12 @@ public class EnemyHolder : MonoBehaviour , IDamageable
     [SerializeField] Scriptable_EnemyType _EnemyType;
     private UIPopUpScore popUpScoreUI;
 
-    public int score = 100;//For Test
+    public int score;//For Test
 
     void Start()
     {
         popUpScoreUI = FindAnyObjectByType<UIPopUpScore>();
+        score = _EnemyType.setScore(GameManager.instance);
     }
 
     public void takeDamage()
@@ -35,7 +36,7 @@ public class EnemyHolder : MonoBehaviour , IDamageable
                 follow.enemyType = FollowNavigation._enemyType.FireBallType_2;
                 break;
             case Scriptable_EnemyType.Type.typeThree:
-                follow.enemyType = FollowNavigation._enemyType.FireDuck;
+                follow.enemyType = FollowNavigation._enemyType.FireBallType_3;
                 break;
         }
     }

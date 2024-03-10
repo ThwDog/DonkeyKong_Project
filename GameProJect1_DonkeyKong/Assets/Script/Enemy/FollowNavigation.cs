@@ -8,7 +8,9 @@ public class FollowNavigation : MonoBehaviour
 {
     public enum _enemyType
     {
-        FireBall , FireDuck , FireBallType_2
+        FireBall   //normal fire ball
+        , FireBallType_2 // fire ball that know dir
+        ,FireBallType_3 // fire ba;; that need to set dir or fire duck
     }
     public _enemyType enemyType;
     NavMeshAgent agent;
@@ -33,7 +35,7 @@ public class FollowNavigation : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();   
-        if(enemyType == _enemyType.FireDuck)
+        if(enemyType == _enemyType.FireBallType_3)
         {
             getDir();
             duckChasingTarget(); 
@@ -48,15 +50,7 @@ public class FollowNavigation : MonoBehaviour
     {
         if(enemyType == _enemyType.FireBall)
             fireBallChasingTarget(target);
-        // else if(enemyType == _enemyType.FireBallType_2)
-        // {
-        //     if(Vector3.Distance(transform.position,waypointTarget) < 2f)
-        //     {
-        //         iterateWaypointIndex();
-        //         duckChasingTarget(); 
-        //     }
-        // }
-        else if(enemyType == _enemyType.FireDuck ||enemyType == _enemyType.FireBallType_2)
+        else if(enemyType == _enemyType.FireBallType_3 ||enemyType == _enemyType.FireBallType_2)
         {
             if(Vector3.Distance(transform.position,waypointTarget) < 2f)
             {
@@ -67,6 +61,8 @@ public class FollowNavigation : MonoBehaviour
         }
         
     }
+
+    
 
     public void fireBallChasingTarget(Transform target)
     {
@@ -84,6 +80,7 @@ public class FollowNavigation : MonoBehaviour
         agent.SetDestination(waypointTarget);
 
         timeFindWayLimit += Time.deltaTime; // if enemy cant reach to way point in 15min then delete that way point
+        Debug.Log(timeFindWayLimit);
         if(timeFindWayLimit >= 15f)
             deleteWay();
     }
@@ -100,6 +97,7 @@ public class FollowNavigation : MonoBehaviour
     {
         timeFindWayLimit = 0;
         wayPoint.Remove(wayPoint[wayPointIndex]);
+        Debug.Log("Delete Way");
     }
 
     void getDir()//for fire Duck

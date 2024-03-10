@@ -8,7 +8,6 @@ public class BarrelspawnEnemy : SpawnPointScript
     [Header("Barrel Spawn")]
     [SerializeField] private LayerMask layerMask01;
     [SerializeField] private LayerMask layerMask02;
-    [SerializeField] private bool canKillPlayer;
 
     void OnCollisionEnter(Collision other)
     {
@@ -17,28 +16,11 @@ public class BarrelspawnEnemy : SpawnPointScript
         //Debug.Log(Convert.ToString(layerMask01,2).PadLeft(32,'0')); 
 
         // if(objHitToSpawn.CompareTag("Enemy") && objHitToSpawn.layer == 9 || objHitToSpawn.CompareTag("Enemy") && objHitToSpawn.layer == 11) 
-        if(objHitToSpawn.CompareTag("Enemy") && hitLayerMask == layerMask01 || objHitToSpawn.CompareTag("Enemy") && hitLayerMask == layerMask02) 
+        if (objHitToSpawn.CompareTag("Enemy") && hitLayerMask == layerMask01 || objHitToSpawn.CompareTag("Enemy") && hitLayerMask == layerMask02)
         {
-            spawnEnemy(spawned);
+            spawnEnemy(spawnObj,gameObject);
             Destroy(objHitToSpawn);
-        }   
-        
-    }
-
-    private void OnTriggerEnter(Collider other) 
-    {
-        if(canKillPlayer)
-        {
-            if(other.CompareTag("Player"))
-            {
-                Debug.Log("Player");
-                PlayerControl player = other.GetComponent<PlayerControl>();
-
-                player.takeDamage();
-                Debug.Log("Hit");
-            } 
         }
+
     }
-
-
 }

@@ -5,9 +5,11 @@ using UnityEngine;
 public class ItemHolder : MonoBehaviour
 {
     public ItemScriptable _Item;
+    private UIPopUpScore popUpScoreUI;
 
-    private void Awake() 
+    private void Start() 
     {
+        popUpScoreUI = FindAnyObjectByType<UIPopUpScore>();
     }
 
     public void checkType(CollectItem_Player player)
@@ -19,21 +21,24 @@ public class ItemHolder : MonoBehaviour
             //add score to score manager
             //GameManager.instance.IncreaseScore(collectaleItem.score,$"Collect {collectaleItem._name}");
             player.IncreaseScore(collectaleItem.score,$"Collect {collectaleItem._name}");
-            StartCoroutine(destroy());
+            StartCoroutine(destroy(collectaleItem.score));
 
         }
         else if(_Item.type == ItemScriptable.Type.weapon)
         {
             //add weapon to player
             Debug.Log("have weapon");
-            StartCoroutine(destroy());
+            StartCoroutine(destroy(0));
         }
     }
 
-    IEnumerator destroy()
+    IEnumerator destroy(int score)
     {
+        if(score != 0)
+            popUpScoreUI.Popup(gameObject.transform,Vector3.zero,score,1f);
         yield return new WaitForSeconds(0.2f);
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
+        //Destroy(this.gameObject);
     }
 
 }
