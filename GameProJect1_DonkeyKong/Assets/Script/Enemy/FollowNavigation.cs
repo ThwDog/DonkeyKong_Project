@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,7 +11,7 @@ public class FollowNavigation : MonoBehaviour
     {
         FireBall   //normal fire ball
         , FireBallType_2 // fire ball that know dir
-        ,FireBallType_3 // fire ba;; that need to set dir or fire duck
+        ,FireBallType_3 // fire ball that need to set dir or fire duck
     }
     public _enemyType enemyType;
     NavMeshAgent agent;
@@ -62,8 +63,6 @@ public class FollowNavigation : MonoBehaviour
         
     }
 
-    
-
     public void fireBallChasingTarget(Transform target)
     {
         agent.speed = chaseSpeed;
@@ -80,7 +79,7 @@ public class FollowNavigation : MonoBehaviour
         agent.SetDestination(waypointTarget);
 
         timeFindWayLimit += Time.deltaTime; // if enemy cant reach to way point in 15min then delete that way point
-        Debug.Log(timeFindWayLimit);
+        //Debug.Log(timeFindWayLimit);
         if(timeFindWayLimit >= 15f)
             deleteWay();
     }
@@ -109,7 +108,18 @@ public class FollowNavigation : MonoBehaviour
             wayPoint.Add(dir.transform);
         }
 
-        
+        //randomWaypoint();
+    }
+
+    void randomWaypoint()
+    {
+
+        for(int i = 0; i < wayPoint.Count;i++)
+        {
+            int index = Random.Range(0,wayPoint.Count - 1);
+            wayPoint.Insert(index,wayPoint[i]); 
+            Debug.Log("way");
+        }
     }
 
     #endregion

@@ -13,7 +13,7 @@ public class MoveingFloor : MonoBehaviour
 
     public direction Direction;
     [SerializeField] float pushForce;
-    [SerializeField] bool flip;
+    public bool flip;
     private Vector3 beforePos; //Default position
     [SerializeField] Vector3 afterPos; // position after flip
 

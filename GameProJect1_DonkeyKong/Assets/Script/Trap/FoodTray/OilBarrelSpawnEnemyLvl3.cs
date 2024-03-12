@@ -59,12 +59,16 @@ public class OilBarrelSpawnEnemyLvl3 : SpawnPointScript
             player.takeDamage();
             Debug.Log("Hit");
         }
+        if(other.GetComponent<FoodTrayScript>())
+        {
+            Destroy(other.gameObject);
+        }
     }
 
     IEnumerator spawn()
     {
         spawnEnemy(spawnObj,spawnPosRight);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSecondsRealtime(1.5f);
     }
 
 }
