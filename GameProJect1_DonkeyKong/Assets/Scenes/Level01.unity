@@ -2232,6 +2232,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8165560753455592947, guid: 6d77f2a08639714449c32aaa12b6df3a, type: 3}
   m_PrefabInstance: {fileID: 4828107008614370189}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &749043350 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4141544114962825605, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
+  m_PrefabInstance: {fileID: 3560552889797546642}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &827917289
 GameObject:
   m_ObjectHideFlags: 0
@@ -14726,6 +14731,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 281394310125643606, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
+      propertyPath: spawnPosition
+      value: 
+      objectReference: {fileID: 749043350}
+    - target: {fileID: 281394310125643606, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
       propertyPath: barrelType.Array.data[0]
       value: 
       objectReference: {fileID: 3263498185222877712, guid: d796efc00b061d043887d6a5495544be, type: 3}
@@ -14778,8 +14787,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4141544114962825605, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.147
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141544114962825605, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.13
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 4286364391867326430, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15567,6 +15580,10 @@ PrefabInstance:
     - target: {fileID: 7833947094513343896, guid: d4435ca422676ef459915fc50a31b562, type: 3}
       propertyPath: layer.m_Bits
       value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 7833947094513343896, guid: d4435ca422676ef459915fc50a31b562, type: 3}
+      propertyPath: spawnDelayTime
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7833947094513343896, guid: d4435ca422676ef459915fc50a31b562, type: 3}
       propertyPath: layerMask.m_Bits

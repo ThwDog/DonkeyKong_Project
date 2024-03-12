@@ -51,7 +51,7 @@ public class SpawnPointScript : MonoBehaviour
     {
         canSpawn = false;
         Instantiate(spawn,spawnerPosition.transform.position,Quaternion.identity);
-        yield return new WaitForSeconds(spawnDelayTime);
+        yield return new WaitForSecondsRealtime(spawnDelayTime);
         canSpawn = true;
     }
 }

@@ -32,16 +32,13 @@ public class SpawnBarrel : MonoBehaviour
     public void startSpawn()
     {
         //fix start time 
-        //Invoke("startFirstSpawn",animationStartDelay);
-        startFirstSpawn();
-        //StartCoroutine(startSpawnDelay());
+        anim.SetTrigger("Barrel01");
+        Invoke("startFirstSpawn",0.5f);
     }
 
     void startFirstSpawn()
     {
         //kongAnimation(nextBarrelNum); //add animation
-        anim.SetTrigger("Barrel01");
-
         Instantiate(barrelType[0],spawnPosition.position,barrelType[0].transform.rotation);
         StartCoroutine(delay());
     }
@@ -77,10 +74,11 @@ public class SpawnBarrel : MonoBehaviour
     IEnumerator delaySpawn(GameObject barrel)
     {
         // add animation
+        canSpawn = false;
+        yield return new WaitForSecondsRealtime(0.52f); // delay between animation and spawn
         Instantiate(barrel,spawnPosition.position,barrel.transform.rotation);
         rndNum = Random.Range(0f,1f);
-        canSpawn = false;
-        yield return new WaitForSeconds(spawnRate);
+        yield return new WaitForSecondsRealtime(spawnRate);
         canSpawn = true;
     }
 

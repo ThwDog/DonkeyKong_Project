@@ -99,6 +99,13 @@ public class PlayerControl : MonoBehaviour , IDamageable
         // }
         // else anim.SetBool("Fall",false);
 
+        anim.SetBool("Climb",isClimbing);
+        
+        if(isClimbing && inputCon.movement.y == 0)
+            anim.speed = 0;
+        else anim.speed = 1;
+        
+
         checkGround();
         move();
         isGrounded = ground();
@@ -174,7 +181,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
                 if (inputCon.jump && isGrounded && canJump)
                 {
                     
-                    //anim.SetTrigger("Jump");
+                    anim.SetTrigger("Jump");
 
                     verticalSpeed = j_force;
                     StartCoroutine(jumpDelay());
@@ -215,9 +222,13 @@ public class PlayerControl : MonoBehaviour , IDamageable
 
         if(isClimbing & isLadder || isLadderDown & isClimbing)
         {
+
+            transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+
             Physics.IgnoreLayerCollision(3,6,!isGrounded);
             Vector3 move = new Vector3(0,inputCon.movement.y,0);
             move.x = 0;
+
             player.Move(move * climbSpeed);
         } 
     }

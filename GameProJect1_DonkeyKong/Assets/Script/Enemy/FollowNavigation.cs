@@ -108,6 +108,8 @@ public class FollowNavigation : MonoBehaviour
         {
             wayPoint.Add(dir.transform);
         }
+
+        
     }
 
     #endregion

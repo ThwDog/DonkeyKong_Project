@@ -81,7 +81,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DropBarrel02
+  m_Name: RollBarrel
   m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
@@ -95,7 +95,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6641085478485924818, guid: 39fb1cd918b646a4296da885f0611369, type: 3}
+  m_Motion: {fileID: -998496362607748373, guid: 7a7b48836a9c2be4187f1d72984ec569, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -293,7 +293,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DropBarrel01
+  m_Name: DropBarrel
   m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
@@ -307,7 +307,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5059006814000262888, guid: 39fb1cd918b646a4296da885f0611369, type: 3}
+  m_Motion: {fileID: 9067093048684652814, guid: 7a7b48836a9c2be4187f1d72984ec569, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
