@@ -21,7 +21,8 @@ public class FollowNavigation : MonoBehaviour
     Transform target;
 
     [Header("FireDuckSetting")]
-    [SerializeField] List<Transform> wayPoint;
+    [SerializeField] List<Transform> wayPoint; //for collected way point
+    private int preRandomIndex; //for collect previous random index 
     int wayPointIndex;
     float timeFindWayLimit;
     Vector3 waypointTarget;
@@ -39,11 +40,12 @@ public class FollowNavigation : MonoBehaviour
         if(enemyType == _enemyType.FireBallType_3)
         {
             getDir();
-            duckChasingTarget(); 
+            randomWaypointIndex();
+            chasingWayPointTarget(); 
         }
         else if(enemyType == _enemyType.FireBallType_2)
         {
-            duckChasingTarget(); 
+            chasingWayPointTarget(); 
         }
     }
 
@@ -51,13 +53,21 @@ public class FollowNavigation : MonoBehaviour
     {
         if(enemyType == _enemyType.FireBall)
             fireBallChasingTarget(target);
-        else if(enemyType == _enemyType.FireBallType_3 ||enemyType == _enemyType.FireBallType_2)
+        else if(enemyType == _enemyType.FireBallType_2)
         {
             if(Vector3.Distance(transform.position,waypointTarget) < 2f)
             {
                 //waypointTarget = wayPoint[wayPointIndex].position; //find next waypoint with waypointIndex
                 iterateWaypointIndex();
-                duckChasingTarget(); 
+                chasingWayPointTarget(); 
+            }
+        }
+        else if(enemyType == _enemyType.FireBallType_3)
+        {
+            if(Vector3.Distance(transform.position,waypointTarget) < 2f)
+            {
+                randomWaypointIndex();
+                chasingWayPointTarget(); 
             }
         }
         
@@ -72,7 +82,7 @@ public class FollowNavigation : MonoBehaviour
 
     #region Fire Duck and fine type 2 Code
 
-    void duckChasingTarget()
+    void chasingWayPointTarget()
     {
         waypointTarget = wayPoint[wayPointIndex].position; //find next waypoint with waypointIndex
         agent.speed = chaseSpeed;
@@ -84,12 +94,23 @@ public class FollowNavigation : MonoBehaviour
             deleteWay();
     }
 
-    private void iterateWaypointIndex()//fire duck
+    private void iterateWaypointIndex()//for enemy that really know dir 
     {
         wayPointIndex++;
         if(wayPointIndex == wayPoint.Count)
             wayPointIndex = 0;
     }   
+
+    private void randomWaypointIndex() // for enemy that need to random waypoint 
+    {
+        int index = Random.Range(0,wayPoint.Count - 1);
+
+        if(preRandomIndex == index)
+            return;
+
+        preRandomIndex = index;
+        wayPointIndex = index;
+    }
 
     //if enemy can reach to way point in limit time remove current way point 
     public void deleteWay()
@@ -108,18 +129,6 @@ public class FollowNavigation : MonoBehaviour
             wayPoint.Add(dir.transform);
         }
 
-        //randomWaypoint();
-    }
-
-    void randomWaypoint()
-    {
-
-        for(int i = 0; i < wayPoint.Count;i++)
-        {
-            int index = Random.Range(0,wayPoint.Count - 1);
-            wayPoint.Insert(index,wayPoint[i]); 
-            Debug.Log("way");
-        }
     }
 
     #endregion

@@ -84,9 +84,8 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
                 {
                     Debug.Log("endScene");
                     TimelineController timeline = FindAnyObjectByType<TimelineController>();
-                    timeline.endedScene();
+                    timeline.endedScene(); // use when player win then play time line animation
                     //SceneManager.LoadScene("CutScene");
-                    // _CanPlayMusic = true;
                     GameManager.instance.state = GameManager._state.playing;
                 }
                 else

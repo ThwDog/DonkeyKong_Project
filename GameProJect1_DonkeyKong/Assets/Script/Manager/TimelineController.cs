@@ -20,7 +20,7 @@ public class TimelineController : MonoBehaviour
     }
 
     // go to summary score scene
-    public void ToCutScene()
+    public void ToCutScene() 
     {
         SetTimeToOne();
         SceneManager.LoadScene("CutScene");
