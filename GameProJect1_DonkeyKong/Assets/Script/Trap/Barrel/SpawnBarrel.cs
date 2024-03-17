@@ -62,7 +62,7 @@ public class SpawnBarrel : MonoBehaviour
             kongAnimation(nextBarrelNum); //add animation
             spawner = StartCoroutine(delaySpawn(barrelType[nextBarrelNum]));
         }
-        else if(!startSpawner || player.isDead)
+        else if(!startSpawner || player.isDead || GameManager.instance.state != GameManager._state.playing)
         {
             if(spawner != null) 
                 StopCoroutine(spawner);

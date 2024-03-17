@@ -15,7 +15,18 @@ public class TimelineController : MonoBehaviour
         if(endCutScene)
         {
             if(GameManager.instance.state == GameManager._state.win)
+            {
+                if(GameObject.FindGameObjectWithTag("Enemy"))
+                {
+                    GameObject[] go = GameObject.FindGameObjectsWithTag("Enemy");
+                    foreach(var gos in go)
+                    {
+                        gos.SetActive(false);
+                    }
+                }
+
                 endCutScene.Play();
+            }
         }
     }
 

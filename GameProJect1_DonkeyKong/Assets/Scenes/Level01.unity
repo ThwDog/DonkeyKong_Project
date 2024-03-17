@@ -482,7 +482,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4880701913646208352, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
@@ -4285,6 +4286,21 @@ MonoBehaviour:
   m_Bidirectional: 1
   m_AutoUpdatePosition: 0
   m_Area: 0
+--- !u!1 &1468200747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2846441425904431512, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+  m_PrefabInstance: {fileID: 142272911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1468200748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9200072993983517683, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+  m_PrefabInstance: {fileID: 142272911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1468200749 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2794955897614944093, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+  m_PrefabInstance: {fileID: 142272911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475261879
 GameObject:
   m_ObjectHideFlags: 0
@@ -6861,6 +6877,22 @@ PrefabInstance:
       propertyPath: bonusScore_Text
       value: 
       objectReference: {fileID: 142272914}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: lpArray.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: lpArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 1468200749}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: lpArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 1468200748}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: lpArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 1468200747}
     - target: {fileID: 5254883506185550591, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
       propertyPath: m_RootOrder
       value: 7

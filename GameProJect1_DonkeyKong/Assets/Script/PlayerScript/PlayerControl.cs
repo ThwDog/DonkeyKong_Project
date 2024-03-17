@@ -331,9 +331,11 @@ public class PlayerControl : MonoBehaviour , IDamageable
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(3.0f);//dead delay time
         Debug.Log("Re");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.instance.state = GameManager._state.lose;
         anim.updateMode = AnimatorUpdateMode.Normal;
         Time.timeScale = 1;
         isDead = false;
+        yield break;
     }
 }

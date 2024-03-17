@@ -37,6 +37,7 @@ public class AttackPoint : MonoBehaviour
     {
         if(collectItem.haveWeapon && other.CompareTag("Enemy"))
         {
+            SoundManager.instance.PlaySfx("Kill");
             Debug.Log("Hit Enemy");
             if(other.gameObject.GetComponent<EnemyHolder>())
             {

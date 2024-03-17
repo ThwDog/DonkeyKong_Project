@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using System;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,12 +13,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text topScore_Text;
     [SerializeField] TMP_Text bonusScore_Text;
     [SerializeField] TMP_Text level_Text;
-    [SerializeField] TMP_Text lp;//just for show live point
+    // [SerializeField] TMP_Text lp;//just for show live point
+    [SerializeField] GameObject[] lpArray; 
     ScoreManager scoreManager;
     [Header("Main Menu UI")]
     [SerializeField] GameObject startBlinkingText;
     [SerializeField] TMP_Text topFiveScoreRank_Text;
     [SerializeField][Range(0,100)] float blinkingTime;
+    [Header("Cut Scene")]
+    [SerializeField] GameObject[] kongUi; 
     public bool canUpdateText = true;
 
     private void Start() 
@@ -125,7 +129,42 @@ public class UIManager : MonoBehaviour
             bonusScore_Text.text = scoreManager._CurrentBonusScore.ToString();
         
         level_Text.text = level.ToString();
-        lp.text = GameManager.instance._LP.ToString();
+
+        if(lpArray != null)
+            imageLP();
+        if(kongUi != null)
+            imageKong();
+        // lp.text = GameManager.instance._LP.ToString();
+    }
+
+    // check from scriptSceneManager and GameManager that what lvl and what lvlState then set image active
+    private void imageKong()
+    {
+        // if player died then only open image by previousScene else active image by nextScene
+        string scene = GameManager.instance.state == GameManager._state.lose? ScriptSceneManager.instance.previousScene : ScriptSceneManager.instance.nextScene;
+        int sceneNum = Convert.ToInt32(scene);
+        // Debug.Log(sceneNum);
+
+        switch(GameManager.instance.difficulty)
+        {
+            case GameManager.diff.one:
+                // for(int i = sceneNum;i < kongUi.Length;i++)
+                //     kongUi[i].SetActive(true);
+                break;
+            case GameManager.diff.two:
+                break;
+            case GameManager.diff.three:
+                break;
+            case GameManager.diff.four:
+                break;
+        }
+    }
+
+    private void imageLP() //if player lose lp then image set active are false
+    {
+        if(GameManager.instance._LP < lpArray.Length)
+            for(int i = GameManager.instance._LP;i < lpArray.Length;i++)
+                lpArray[i].SetActive(false);
     }
 
     IEnumerator textBlinking(float time)
