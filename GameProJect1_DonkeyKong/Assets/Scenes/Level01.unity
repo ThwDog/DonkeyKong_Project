@@ -2233,11 +2233,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8165560753455592947, guid: 6d77f2a08639714449c32aaa12b6df3a, type: 3}
   m_PrefabInstance: {fileID: 4828107008614370189}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &749043350 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4141544114962825605, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-  m_PrefabInstance: {fileID: 3560552889797546642}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &827917289
 GameObject:
   m_ObjectHideFlags: 0
@@ -14763,17 +14758,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 281394310125643606, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-      propertyPath: spawnPosition
-      value: 
-      objectReference: {fileID: 749043350}
-    - target: {fileID: 281394310125643606, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-      propertyPath: barrelType.Array.data[0]
-      value: 
-      objectReference: {fileID: 3263498185222877712, guid: d796efc00b061d043887d6a5495544be, type: 3}
-    - target: {fileID: 281394310125643606, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-      propertyPath: barrelType.Array.data[1]
-      value: 
-      objectReference: {fileID: 6107590077214759525, guid: cbfdd94f0f2a3bd499be183615f9edab, type: 3}
+      propertyPath: animationSpawnDelay
+      value: 0.83
+      objectReference: {fileID: 0}
     - target: {fileID: 1689849028363262869, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -14788,7 +14775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1689849028363262869, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.01
+      value: -10.84
       objectReference: {fileID: 0}
     - target: {fileID: 1689849028363262869, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14818,38 +14805,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4141544114962825605, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.147
-      objectReference: {fileID: 0}
-    - target: {fileID: 4141544114962825605, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286364391867326430, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 14e571d017a40814b93f2216f1725392, type: 2}
-    - target: {fileID: 7556262055455410769, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 52ea70129ec57d84296f5c22a939b5f4, type: 2}
-    - target: {fileID: 7776811071732257606, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 14e571d017a40814b93f2216f1725392, type: 2}
     - target: {fileID: 8315546620219578044, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
       propertyPath: m_Name
       value: BarrelSpawnner
       objectReference: {fileID: 0}
-    - target: {fileID: 8702553310712271504, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 52ea70129ec57d84296f5c22a939b5f4, type: 2}
-    - target: {fileID: 8878321826892755131, guid: 3cb47e0e3acee1d4e9056bb958578266, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 14e571d017a40814b93f2216f1725392, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15563,7 +15522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2327210080665593178, guid: d4435ca422676ef459915fc50a31b562, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.7
+      value: -26.6
       objectReference: {fileID: 0}
     - target: {fileID: 2327210080665593178, guid: d4435ca422676ef459915fc50a31b562, type: 3}
       propertyPath: m_LocalPosition.y

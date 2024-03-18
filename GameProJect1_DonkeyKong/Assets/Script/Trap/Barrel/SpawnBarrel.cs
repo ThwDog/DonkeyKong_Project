@@ -6,9 +6,11 @@ public class SpawnBarrel : MonoBehaviour
 {
     [Header("Setting")]
     [SerializeField] List<GameObject> barrelType;
-    [SerializeField][Range(1,10)] float spawnRate;
-    [SerializeField][Range(1,10)] float animationStartDelay;
-    [SerializeField] Transform spawnPosition;
+    [SerializeField][Range(1f,10f)] float spawnRate;
+    [SerializeField][Range(0f,10f)] float animationSpawnDelay;
+    [SerializeField] Transform spawnNormalPosition , spawnStartPosition;
+    [Header("Show Barrel model")]
+    [SerializeField] private GameObject brownBarrel , blueBarrel; // use for set active when play animation
     bool canSpawn = true;
     bool startSpawner;
     private float rndNum;
@@ -33,13 +35,20 @@ public class SpawnBarrel : MonoBehaviour
     {
         //fix start time 
         anim.SetTrigger("Barrel01");
+        Invoke("activeOpenBarrel",0.2f);
         Invoke("startFirstSpawn",0.5f);
+    }
+
+    void activeOpenBarrel()
+    {
+        blueBarrel.SetActive(true);
     }
 
     void startFirstSpawn()
     {
         //kongAnimation(nextBarrelNum); //add animation
-        Instantiate(barrelType[0],spawnPosition.position,barrelType[0].transform.rotation);
+        blueBarrel.SetActive(false);
+        Instantiate(barrelType[0],spawnStartPosition.position,barrelType[0].transform.rotation);
         StartCoroutine(delay());
     }
 
@@ -59,7 +68,11 @@ public class SpawnBarrel : MonoBehaviour
     {
         if(canSpawn && startSpawner)
         {
+            anim.speed = 0.95f;
+
             kongAnimation(nextBarrelNum); //add animation
+            brownBarrel.SetActive(true);
+
             spawner = StartCoroutine(delaySpawn(barrelType[nextBarrelNum]));
         }
         else if(!startSpawner || player.isDead || GameManager.instance.state != GameManager._state.playing)
@@ -75,10 +88,14 @@ public class SpawnBarrel : MonoBehaviour
     {
         // add animation
         canSpawn = false;
-        yield return new WaitForSecondsRealtime(0.52f); // delay between animation and spawn
-        Instantiate(barrel,spawnPosition.position,barrel.transform.rotation);
+        yield return new WaitForSeconds(animationSpawnDelay); // delay between animation and spawn
+
+        brownBarrel.SetActive(false);
+
+        Instantiate(barrel,spawnNormalPosition.position,barrel.transform.rotation);
         rndNum = Random.Range(0f,1f);
         yield return new WaitForSecondsRealtime(spawnRate);
+        anim.speed = 1f;
         canSpawn = true;
     }
 
@@ -106,15 +123,15 @@ public class SpawnBarrel : MonoBehaviour
         {
             case 1:
                 anim.SetTrigger("Barrel02");
-                Debug.Log("Play animation 1");
+                // Debug.Log("Play animation 1");
                 break;
             case 2:
                 anim.SetTrigger("Barrel02");
-                Debug.Log("Play animation 2");
+                // Debug.Log("Play animation 2");
                 break;
             case 3:
                 anim.SetTrigger("Barrel01");
-                Debug.Log("Play animation 3");
+                // Debug.Log("Play animation 3");
                 break;
             default:
                 break;
