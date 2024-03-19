@@ -71,14 +71,18 @@ public class ElevatorScript : MonoBehaviour
 
     private IEnumerator spawn(GameObject spawner,GameObject target)
     {
-
         //Vector3 _dis = new Vector3(1,1,0); 
         if(!hasSpawn)
         {
+            // Vector3 pos = inst == _inst.down ? spawnPosi : -spawnPosi;
+
             ElevatorPadScript pad = Instantiate(padOBJ,spawner.transform.position + spawnPosi,padOBJ.gameObject.transform.rotation);
+            
+
             pad.transform.parent = gameObject.transform;
             pad.speed = padSpeed;
             //pad.target = target.transform;
+
             pad.target = new Vector3(target.transform.position.x + spawnPosi.x,target.transform.position.y,target.transform.position.z);
             hasSpawn = true;
             //padCount.Add(pad.gameObject);
@@ -92,14 +96,20 @@ public class ElevatorScript : MonoBehaviour
     private void setSpawnerPosition(GameObject start,GameObject end)
     {
         Vector3 _dis = new Vector3(0,dis,0); 
-        end.transform.position = start.transform.position + _dis; 
+        if(inst == _inst.down)
+            end.transform.position = start.transform.position + _dis; 
+        else if(inst == _inst.top)
+            end.transform.position = start.transform.position - _dis; 
     }
 
     private void OnDrawGizmos() 
     {
         Gizmos.color = Color.red;
         Vector3 _dis = new Vector3(0,dis,0); 
-        Gizmos.DrawLine(down.transform.position,down.transform.position + _dis);
+        if(inst == _inst.down)
+            Gizmos.DrawLine(down.transform.position,down.transform.position + _dis);
+        else if(inst == _inst.top)
+            Gizmos.DrawLine(up.transform.position,up.transform.position - _dis);
     }
 
 }
