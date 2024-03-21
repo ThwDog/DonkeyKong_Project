@@ -53,4 +53,9 @@ public class TimelineController : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    public void PlaySFx(string sfxName)
+    {
+        SoundManager.instance.PlaySfx(sfxName);
+    }
 }

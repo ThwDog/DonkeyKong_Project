@@ -60,4 +60,14 @@ public class PlayAnimationByList : MonoBehaviour
     {
         anim.SetTrigger(animationName);
     }
+
+    public void setAnimationToZero()
+    {
+        anim.speed = 0;
+    }
+
+    public void setAnimationToOne()
+    {
+        anim.speed = 1;
+    }
 }
