@@ -12,7 +12,7 @@ public class TimelineController : MonoBehaviour
 
     public void endedScene()
     {
-        if(endCutScene)
+        if(endCutScene != null)
         {
             if(GameManager.instance.state == GameManager._state.win)
             {

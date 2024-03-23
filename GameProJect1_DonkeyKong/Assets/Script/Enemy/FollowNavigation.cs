@@ -13,15 +13,21 @@ public class FollowNavigation : MonoBehaviour
         , FireBallType_2 // fire ball that know dir
         ,FireBallType_3 // fire ball that need to set dir or fire duck
     }
+
+
+
     public _enemyType enemyType;
     NavMeshAgent agent;
     [SerializeField][Range(0,100)] float chaseSpeed;
     private bool hitPlayer = false;
     private bool enableChasing = true;
     Transform target;
+    CollectItem_Player checkHammer;
 
     [Header("FireDuckSetting")]
     [SerializeField] List<Transform> wayPoint; //for collected way point
+    [SerializeField] GameObject fireYellow; // normal Model
+    [SerializeField] GameObject fireBlue; // Change model when player have hammer
     private int preRandomIndex; //for collect previous random index 
     int wayPointIndex;
     float timeFindWayLimit;
@@ -37,6 +43,8 @@ public class FollowNavigation : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();   
+        checkHammer = GameObject.FindGameObjectWithTag("Player").GetComponent<CollectItem_Player>();   
+
         if(enemyType == _enemyType.FireBallType_3)
         {
             getDir();
@@ -51,6 +59,8 @@ public class FollowNavigation : MonoBehaviour
 
     private void Update() 
     {
+        changeModel();
+
         if(enemyType == _enemyType.FireBall)
             fireBallChasingTarget(target);
         else if(enemyType == _enemyType.FireBallType_2)
@@ -133,6 +143,21 @@ public class FollowNavigation : MonoBehaviour
 
     #endregion
 
+    // change model when player have hammer
+    private void changeModel()
+    {
+        if(checkHammer.haveWeapon)
+        {
+            fireYellow.SetActive(false);
+            fireBlue.SetActive(true);
+        }
+        else
+        {
+            fireYellow.SetActive(true);
+            fireBlue.SetActive(false);
+        }
+    }
+    
     private void OnCollisionEnter(Collision other) 
     {
         if(other.gameObject.CompareTag("Player") && !hitPlayer)
