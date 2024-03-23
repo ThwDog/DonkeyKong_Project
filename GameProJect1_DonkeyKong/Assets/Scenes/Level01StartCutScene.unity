@@ -1350,6 +1350,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8812413652194848055, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4880701913646208352, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
@@ -1374,17 +1378,6 @@ GameObject:
 --- !u!114 &1285462293 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7421446520194543976, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
-  m_PrefabInstance: {fileID: 1285462289}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1285462294 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2169389301540965530, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
   m_PrefabInstance: {fileID: 1285462289}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -2006,7 +1999,7 @@ PrefabInstance:
     - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
       propertyPath: bonusScore_Text
       value: 
-      objectReference: {fileID: 1285462294}
+      objectReference: {fileID: 0}
     - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
       propertyPath: lpArray.Array.size
       value: 3
