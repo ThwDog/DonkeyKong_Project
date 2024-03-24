@@ -14,27 +14,36 @@ public class MoveingFloor : MonoBehaviour
     public direction Direction;
     [SerializeField] float pushForce;
     public bool flip;
+    bool canPush = true;
     private Vector3 beforePos; //Default position
     [SerializeField] Vector3 afterPos; // position after flip
+    Animator anim;
 
-    private void Start() 
+    private void Start()
     {
-        beforePos = gameObject.transform.position;     
+        beforePos = gameObject.transform.position;
+        anim = GetComponent<Animator>();
     }
 
-    private void Update() 
+    private void Update()
     {
-        roteAnimation();
-        if(flip)
+        if (GameManager.instance.state != GameManager._state.playing)
         {
-            if(Direction == direction.right)
+            anim.speed = 0;
+            canPush = false;
+        }
+
+        roteAnimation();
+        if (flip)
+        {
+            if (Direction == direction.right)
                 Direction = direction.left;
             else Direction = direction.right;
 
             // gameObject.transform.localPosition = afterPos;
             //gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x,gameObject.transform.localScale.y,gameObject.transform.localScale.z); 
             flip = false;
-        }     
+        }
         else
         {
             //transform.transform.position = beforePos;
@@ -44,30 +53,38 @@ public class MoveingFloor : MonoBehaviour
 
     public void pushPlayer(GameObject obj)
     {
-        CharacterController player = obj.GetComponent<CharacterController>();
-        Vector3 dir = Direction == direction.right? Vector3.right : Vector3.left;
-        player.Move(dir * pushForce * Time.fixedDeltaTime);
+        if (canPush)
+        {
+            CharacterController player = obj.GetComponent<CharacterController>();
+            Vector3 dir = Direction == direction.right ? Vector3.right : Vector3.left;
+            player.Move(dir * pushForce * Time.fixedDeltaTime);
+        }
     }
 
-    public void pushObj(GameObject obj , float speed)
+    public void pushObj(GameObject obj, float speed)
     {
-        Rigidbody rb = obj.GetComponent<Rigidbody>();
-        Vector3 dir = Direction == direction.right? Vector3.right : Vector3.left;
-        
-        rb.AddForce(dir * (pushForce * speed) * Time.deltaTime);
+        if (canPush)
+        {
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+            Vector3 dir = Direction == direction.right ? Vector3.right : Vector3.left;
+
+            rb.AddForce(dir * (pushForce * speed) * Time.deltaTime);
+        }
     }
 
     private void roteAnimation()
     {
-        if(Direction == direction.right)
+        if (Direction == direction.right)
         {
             gameObject.transform.position = beforePos;
-            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
         else
         {
             gameObject.transform.localPosition = afterPos;
-            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
     }
+
+
 }

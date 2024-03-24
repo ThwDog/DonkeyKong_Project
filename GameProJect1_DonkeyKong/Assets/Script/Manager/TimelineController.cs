@@ -16,7 +16,7 @@ public class TimelineController : MonoBehaviour
         {
             if(GameManager.instance.state == GameManager._state.win)
             {
-                if(GameObject.FindGameObjectWithTag("Enemy"))
+                if(GameObject.FindGameObjectWithTag("Enemy")) // if win set enemy go is false
                 {
                     GameObject[] go = GameObject.FindGameObjectsWithTag("Enemy");
                     foreach(var gos in go)
@@ -24,7 +24,6 @@ public class TimelineController : MonoBehaviour
                         gos.SetActive(false);
                     }
                 }
-
                 endCutScene.Play();
             }
         }
@@ -36,7 +35,7 @@ public class TimelineController : MonoBehaviour
         SetTimeToOne();
         SceneManager.LoadScene("CutScene");
         ScriptSceneManager.instance._CanPlayMusic = true;
-        GameManager.instance.state = GameManager._state.playing;
+        // GameManager.instance.state = GameManager._state.playing;
     }
 
     public void ToNextLevel()
@@ -58,4 +57,6 @@ public class TimelineController : MonoBehaviour
     {
         SoundManager.instance.PlaySfx(sfxName);
     }
+
+    
 }

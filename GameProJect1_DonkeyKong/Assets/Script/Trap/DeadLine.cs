@@ -10,6 +10,7 @@ public class DeadLine : MonoBehaviour
         WinLine = 1, DeadLine = 2 , PlayerDeadLine = 3
     }
 
+    bool playerHasTouch = false;
     public _lineType LineType;
     private int lineTypeNum;
     [SerializeField] float timeStay = 2;
@@ -26,7 +27,7 @@ public class DeadLine : MonoBehaviour
             destroyObjLine(other);
         else if(lineTypeNum == 1)
             winLine(other);
-        else if(lineTypeNum == 3)
+        else if(lineTypeNum == 3&&!playerHasTouch)
             playerDead(other);
     }
 
@@ -36,20 +37,12 @@ public class DeadLine : MonoBehaviour
         {
             PlayerControl player = other.GetComponent<PlayerControl>();
             player.takeDamage();
+            playerHasTouch = !playerHasTouch;
         } 
     }
 
     private void destroyObjLine(Collider other)
     {
-        // if(other.gameObject.layer != 8 || other.gameObject.layer != 6 || other.gameObject.layer != 10)
-        // {
-        //        
-        // } 
-        // if(other.gameObject.CompareTag("Player"))
-        // {
-        //     PlayerControl player = other.GetComponent<PlayerControl>();
-        //     player.takeDamage();
-        // } 
         Debug.Log("Destroy " + other.name);
         Destroy(other.gameObject);
     }

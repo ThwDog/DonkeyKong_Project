@@ -17,6 +17,8 @@ public class PlayAnimationByList : MonoBehaviour
     [Header("Setting For Kong")]
     [SerializeField] float speed;
     private int indexList = 0;
+    [SerializeField] bool canMoveTo;
+    [SerializeField] GameObject target;
 
 
     void Start()
@@ -27,14 +29,19 @@ public class PlayAnimationByList : MonoBehaviour
 
     private void Update() 
     {
+        // if(canMoveTo && GameManager.instance.state == GameManager._state.win)
+        // {
+        //     Vector3 _target = new Vector3(target.transform.position.x,0,0);
 
+        //     transform.position = Vector3.MoveTowards(transform.position,_target,1000);
+        // }
     }
 
     IEnumerator playAnimation()
     {
         if(!canPlay)
             yield break;
-        if(indexList >= animationList.Length - 1)
+        if(indexList >= animationList.Length)
             indexList = 0;
         
         anim.SetTrigger(animationList[indexList].AnimationName);
@@ -70,4 +77,6 @@ public class PlayAnimationByList : MonoBehaviour
     {
         anim.speed = 1;
     }
+
+   
 }

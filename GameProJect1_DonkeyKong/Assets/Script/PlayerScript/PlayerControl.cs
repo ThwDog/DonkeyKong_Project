@@ -308,6 +308,8 @@ public class PlayerControl : MonoBehaviour , IDamageable
     {
         if(canTakeDamage)
         {
+            canTakeDamage = false; //araiwa
+
             GameManager.instance._LP--;
             SoundManager.instance.StopAllMusic();
             anim.updateMode = AnimatorUpdateMode.UnscaledTime;
@@ -330,12 +332,13 @@ public class PlayerControl : MonoBehaviour , IDamageable
         transform.rotation = new Quaternion(0,180,0,0);// rote because animation should look like this
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(3.0f);//dead delay time
-        Debug.Log("Re");
         // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameManager.instance.state = GameManager._state.lose;
+
         anim.updateMode = AnimatorUpdateMode.Normal;
         Time.timeScale = 1;
         isDead = false;
+
         yield break;
     }
 }

@@ -131,6 +131,7 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
                 {
                     // if losing then load same scene else load next Scene
                     string scene = GameManager.instance.state == GameManager._state.lose? previousScene : nextScene;
+                    Debug.Log("LoadScene " + scene);
                     SceneManager.LoadScene("Level" + scene);
                     GameManager.instance.state = GameManager._state.playing;
                     checkNextScene();
@@ -268,7 +269,10 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
                 }
                 break;
             case scene.two:
-
+                if (_CanPlayMusic)
+                {
+                    _CanPlayMusic = false;
+                }
                 break;
             case scene.three:
                 if (_CanPlayMusic)

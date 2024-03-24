@@ -42,6 +42,7 @@ public class FoodTraySpawner : SpawnPointScript
 
     void leftAndRightSpawn()
     {
+        
         if(spawnerIsLeft && _canSpawn)
             StartCoroutine(leftNRightSpawn(foodTray,leftRightSpawner[0]));
         else if(!spawnerIsLeft && _canSpawn)
