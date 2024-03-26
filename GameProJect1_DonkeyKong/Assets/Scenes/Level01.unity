@@ -1033,6 +1033,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 92be6bdcdaf9c8646ba5158c0469ed3a, type: 2}
     - {fileID: 11400000, guid: 700846055d1bf894785dff1fa1f30fa4, type: 2}
     - {fileID: 11400000, guid: 4d10053a066220d44a0e30fc422b75ba, type: 2}
+    - {fileID: 11400000, guid: f5f161293064d0947af115a335ce598a, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -1088,6 +1089,20 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: Shy
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2018918835}
+          m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+          m_MethodName: releaseController
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1011696256
@@ -2250,6 +2265,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 194aa7926f8af574da69229aeaf0c8d5, type: 3}
+--- !u!114 &2018918835 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 223131603643012540, guid: 194aa7926f8af574da69229aeaf0c8d5, type: 3}
+  m_PrefabInstance: {fileID: 2018918834}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3454b2f5f92fa3543a4c3352a4804dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2037288446
 GameObject:
   m_ObjectHideFlags: 0

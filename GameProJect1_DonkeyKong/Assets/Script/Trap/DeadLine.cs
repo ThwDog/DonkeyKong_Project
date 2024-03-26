@@ -7,7 +7,7 @@ public class DeadLine : MonoBehaviour
 {
     public enum _lineType
     {
-        WinLine = 1, DeadLine = 2 , PlayerDeadLine = 3
+        WinLine = 1, DeadLine = 2, PlayerDeadLine = 3
     }
 
     bool playerHasTouch = false;
@@ -15,30 +15,32 @@ public class DeadLine : MonoBehaviour
     private int lineTypeNum;
     [SerializeField] float timeStay = 2;
 
+    [Header("For LVL 3")]
+    [SerializeField] PlayAnimationByList playAnimation;
     private void Start()
     {
         lineTypeNum = (int)LineType;
         //Debug.Log($"Line type is {lineTypeNum} which it type of {LineType}");
     }
 
-    private void OnTriggerEnter(Collider other) 
+    private void OnTriggerEnter(Collider other)
     {
-        if(lineTypeNum == 2)
+        if (lineTypeNum == 2)
             destroyObjLine(other);
-        else if(lineTypeNum == 1)
+        else if (lineTypeNum == 1)
             winLine(other);
-        else if(lineTypeNum == 3&&!playerHasTouch)
+        else if (lineTypeNum == 3 && !playerHasTouch)
             playerDead(other);
     }
 
     private void playerDead(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             PlayerControl player = other.GetComponent<PlayerControl>();
             player.takeDamage();
             playerHasTouch = !playerHasTouch;
-        } 
+        }
     }
 
     private void destroyObjLine(Collider other)
@@ -49,11 +51,25 @@ public class DeadLine : MonoBehaviour
 
     private void winLine(Collider other) // by touch
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Win");
+            
+            if (playAnimation != null)
+            {
+                Rigidbody rb = playAnimation.gameObject.GetComponent<Rigidbody>();
+
+                if (playAnimation.canMoveToward)
+                {
+                    // Debug.Log("00");
+                    rb.useGravity = false;
+                    rb.isKinematic = true;
+                    playAnimation.moveToTarget();
+                }
+            }
+
             StartCoroutine(playWinAnimation());
-        } 
+        }
     }
 
     public IEnumerator playWinAnimation()

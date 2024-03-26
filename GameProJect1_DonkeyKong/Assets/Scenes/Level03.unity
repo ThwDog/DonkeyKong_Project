@@ -1348,6 +1348,8 @@ PlayableDirector:
     value: {fileID: 1121461627}
   - key: {fileID: -5622153513940919025, guid: 6c2a156d72dbae54caf8dc281ef3e6aa, type: 2}
     value: {fileID: 1100114063}
+  - key: {fileID: -3072153297004613629, guid: 6c2a156d72dbae54caf8dc281ef3e6aa, type: 2}
+    value: {fileID: 904362117}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &207540671
@@ -1366,6 +1368,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 4d10053a066220d44a0e30fc422b75ba, type: 2}
     - {fileID: 11400000, guid: 20de6ef44cbd43d4ba88000cb12858f1, type: 2}
+    - {fileID: 11400000, guid: f5f161293064d0947af115a335ce598a, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -1386,6 +1389,20 @@ MonoBehaviour:
         - m_Target: {fileID: 1858245662}
           m_TargetAssemblyTypeName: TimelineController, Assembly-CSharp
           m_MethodName: ToCutScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2084128133}
+          m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+          m_MethodName: releaseController
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7004,6 +7021,10 @@ PrefabInstance:
       value: 430
       objectReference: {fileID: 0}
     - target: {fileID: 4532267579405962441, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1212547513}
+    - target: {fileID: 4532267579405962441, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
       propertyPath: canMoveTo
       value: 1
       objectReference: {fileID: 0}
@@ -7011,6 +7032,14 @@ PrefabInstance:
       propertyPath: targetPos
       value: 
       objectReference: {fileID: 1212547514}
+    - target: {fileID: 4532267579405962441, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
+      propertyPath: moveToSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532267579405962441, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
+      propertyPath: canMoveToward
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5491381107684256276, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -7021,7 +7050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491381107684256276, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 41.6
+      value: 41.3
       objectReference: {fileID: 0}
     - target: {fileID: 5491381107684256276, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7056,8 +7085,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8230339422427199548, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230339422427199548, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
       propertyPath: m_Constraints
-      value: 120
+      value: 124
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7069,6 +7102,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4342544140253667838, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
   m_PrefabInstance: {fileID: 1688404419}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1688404423 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4532267579405962441, guid: b9056f7ddccd52a4ab990e03e9568bda, type: 3}
+  m_PrefabInstance: {fileID: 1688404419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688404420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493326ff6b4db234e9daf2966a0aff0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1706558544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7125,6 +7169,10 @@ PrefabInstance:
       propertyPath: timeStay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2282296254452601460, guid: 712eb67c87ddf084ab49c782c8e7f075, type: 3}
+      propertyPath: playAnimation
+      value: 
+      objectReference: {fileID: 1688404423}
     - target: {fileID: 3215926733024936142, guid: 712eb67c87ddf084ab49c782c8e7f075, type: 3}
       propertyPath: m_Name
       value: WinLine
@@ -8310,6 +8358,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2084128133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 223131603643012540, guid: 194aa7926f8af574da69229aeaf0c8d5, type: 3}
+  m_PrefabInstance: {fileID: 2018918834}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3454b2f5f92fa3543a4c3352a4804dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2100054815
 GameObject:
   m_ObjectHideFlags: 0
