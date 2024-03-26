@@ -314,7 +314,9 @@ public class PlayerControl : MonoBehaviour , IDamageable
             SoundManager.instance.StopAllMusic();
             anim.updateMode = AnimatorUpdateMode.UnscaledTime;
             //player dead play animation wait and re scene
+
             item_Player.resetBeforeHaveWeapon();
+
             isDead = true;
             anim.SetBool("Dead",isDead);
 
