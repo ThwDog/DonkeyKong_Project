@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     [Header("Cut Scene")]
     [SerializeField] GameObject[] kongUi; 
     public bool canUpdateText = true;
+    bool isUIUpdate =false;
 
     private void Start() 
     {
@@ -38,6 +39,11 @@ public class UIManager : MonoBehaviour
         updateText();
         if(topFiveScoreRank_Text)
             showTopFive();
+        if(kongUi.Length > 0 && !isUIUpdate)
+        {
+            ScriptSceneManager.instance.kongImgUi(kongUi);
+            isUIUpdate = !isUIUpdate;
+        }
     }
 
     private void showTopFive()
@@ -177,4 +183,6 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(time);
         }
     }
+
+    
 }

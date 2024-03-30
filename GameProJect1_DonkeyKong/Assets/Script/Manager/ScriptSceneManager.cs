@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
         mainMenu = 5
     }
 
+    private int howManySceneYouPass = 0; // for active kong ui in ui manager 
     public scene _scene;
     internal string nextScene;
     internal string previousScene;
@@ -56,6 +58,8 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
         // when state win
         if (GameManager.instance.state == GameManager._state.win)
         {
+            
+
             // add score in player 
             if (FindObjectOfType<CollectItem_Player>())
             {
@@ -79,6 +83,10 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
 
             if (_scene != scene.cutScene)
             {
+                if(_scene == scene.four) // for clear ui index that use to active kong img ui
+                    resetPassScene();
+                else howManySceneYouPass++;
+
                 checkNextScene();
                 // Play Ended Scene
                 if (FindAnyObjectByType<TimelineController>()) // make sure that have time line in scene
@@ -307,4 +315,20 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
     //     SceneManager.LoadScene("Level" + previousScene);
     //     GameManager.instance.state = GameManager._state.playing;
     // }
+
+    public void kongImgUi(GameObject[] ui)
+    {
+        for (int i = 0; i <= howManySceneYouPass; i++)
+        {
+            if(ui.Length < i) // need to check again if it bug 
+                break;
+
+            ui[i].SetActive(true);
+        }
+    }
+
+    public void resetPassScene()
+    {
+        howManySceneYouPass = 0;
+    }
 }
