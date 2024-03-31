@@ -5,6 +5,9 @@ using UnityEngine;
 public class SpringScript : MonoBehaviour
 {
     Animator anim;
+    [Tooltip("For spring bounce animation")]
+    [SerializeField] Animator springAnim; // for spring bounce animation
+    [Header("")]
     [Range(1,10)]public float animationSpeed;
     [SerializeField]private bool _activate;
     public bool activate
@@ -46,5 +49,10 @@ public class SpringScript : MonoBehaviour
     public void playVFXfall()
     {
         SoundManager.instance.PlaySfx("SpringFall");
+    }
+
+    public void BounceTriggerAnim()
+    {
+        springAnim.SetTrigger("Bounce");
     }
 }

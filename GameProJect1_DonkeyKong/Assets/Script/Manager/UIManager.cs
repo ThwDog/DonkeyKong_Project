@@ -133,7 +133,7 @@ public class UIManager : MonoBehaviour
         if(bonusScore_Text != null)
             bonusScore_Text.text = scoreManager._CurrentBonusScore.ToString();
         
-        level_Text.text = level.ToString();
+        level_Text.text = "L = " + level.ToString();
 
         if(lpArray != null)
             imageLP();
