@@ -23,7 +23,7 @@ public class GUIButtonTest : MonoBehaviour
 
     void OnGUI() 
     {
-        GUILayout.BeginArea(new Rect(450,950,150,150));
+        GUILayout.BeginArea(new Rect(450,950,200,150));
         if(ShowGui)
         {
             if (GUILayout.Button("Win"))
@@ -48,6 +48,9 @@ public class GUIButtonTest : MonoBehaviour
                     Time.timeScale = 1;
                 }
             }
+
+            if(GUILayout.Button("Add Life : Current LP is " + GameManager.instance._LP) && GameManager.instance._LP < 3)
+                GameManager.instance._LP++;
 
             if(player != null)
             {

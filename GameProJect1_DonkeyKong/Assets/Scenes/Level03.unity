@@ -6992,7 +6992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9b0003e85de1184fb39ed7ed8923144, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.27
+      value: 17.43
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9b0003e85de1184fb39ed7ed8923144, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8440,8 +8440,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623149000}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.465, z: -0.4600001}
-  m_LocalScale: {x: 59.7309, y: 1.0044707, z: 12.988906}
+  m_LocalPosition: {x: -0.01, y: -0.483, z: -0.4600001}
+  m_LocalScale: {x: 59.7309, y: 1.1174736, z: 12.988906}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1439854128}
@@ -10794,12 +10794,24 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4785460593174230526, guid: e0b349673d87f8048a47ee0ef42e961b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785460593174230526, guid: e0b349673d87f8048a47ee0ef42e961b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785460593174230526, guid: e0b349673d87f8048a47ee0ef42e961b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785460593174230526, guid: e0b349673d87f8048a47ee0ef42e961b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4785460593174230526, guid: e0b349673d87f8048a47ee0ef42e961b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 52.2
+      value: 54.359997
       objectReference: {fileID: 0}
     - target: {fileID: 4785460593174230526, guid: e0b349673d87f8048a47ee0ef42e961b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12379,7 +12391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5040633172274674461, guid: 4c920f2fae8f6924da0d4e8f0d39a3a0, type: 3}
       propertyPath: orthographic size
-      value: 36
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 6260980280532961950, guid: 4c920f2fae8f6924da0d4e8f0d39a3a0, type: 3}
       propertyPath: m_BoundingVolume
@@ -12431,7 +12443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9171498280353486389, guid: 4c920f2fae8f6924da0d4e8f0d39a3a0, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 36
+      value: 38
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
