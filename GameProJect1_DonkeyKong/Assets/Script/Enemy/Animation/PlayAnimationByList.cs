@@ -7,7 +7,7 @@ public class PlayAnimationByList : MonoBehaviour
 {
     public enum _type
     {
-        Pauline, Kong
+        Pauline, Kong , Other
     }
     public _type type;
 
