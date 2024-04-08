@@ -9,6 +9,7 @@ public class AttackPoint : MonoBehaviour
     //bool right = true;
     CollectItem_Player collectItem;
     Controller controller;
+    [SerializeField] VFXScript vfxScript; // for active particle when destory enemy
 
     private void Awake() 
     {
@@ -35,10 +36,14 @@ public class AttackPoint : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
+
         if(collectItem.haveWeapon && other.CompareTag("Enemy"))
         {
             SoundManager.instance.PlaySfx("Kill");
             Debug.Log("Hit Enemy");
+
+            vfxScript.playParticle(other.gameObject.transform,new Vector3(0,-3f,0));
+
             if(other.gameObject.GetComponent<EnemyHolder>())
             {
                 EnemyHolder enemy = other.GetComponent<EnemyHolder>();

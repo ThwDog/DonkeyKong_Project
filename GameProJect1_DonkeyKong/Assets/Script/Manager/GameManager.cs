@@ -82,7 +82,7 @@ public class GameManager : SingletonClass<GameManager>
 
     public void winGame(ScriptSceneManager sceneManager)
     {
-        if(sceneManager.win && sceneManager._scene == ScriptSceneManager.scene.cutScene)
+        if(sceneManager.win && sceneManager._scene == ScriptSceneManager.scene.cutScene) // maybe when win go to main menu
         {
             if(state == _state.win)
             {
