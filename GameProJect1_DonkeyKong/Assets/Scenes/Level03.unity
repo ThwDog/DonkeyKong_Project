@@ -7914,6 +7914,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526342522}
   m_Mesh: {fileID: -1359189856529635300, guid: a96b06e1ca944894496e5eb3fb272ed4, type: 3}
+--- !u!1 &542897596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 472379672077642176, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+  m_PrefabInstance: {fileID: 5094281}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &549107035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9100,6 +9105,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683838698}
   m_Mesh: {fileID: -1359189856529635300, guid: a96b06e1ca944894496e5eb3fb272ed4, type: 3}
+--- !u!114 &696329959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6386255739939959588, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+  m_PrefabInstance: {fileID: 5094281}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &704411357
 GameObject:
   m_ObjectHideFlags: 0
@@ -13103,9 +13119,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5094285}
     - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: exitGameButton
+      value: 
+      objectReference: {fileID: 696329959}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: pauseMenuPanel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
       propertyPath: bonusScore_Text
       value: 
       objectReference: {fileID: 5094284}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 542897596}
     - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
       propertyPath: lpArray.Array.size
       value: 3

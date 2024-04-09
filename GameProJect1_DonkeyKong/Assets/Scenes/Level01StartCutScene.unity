@@ -1130,6 +1130,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6c50da9923f03641a8510ff0e2e88be, type: 3}
+--- !u!1 &904903416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 472379672077642176, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+  m_PrefabInstance: {fileID: 1285462289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1110560280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,6 +1554,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1285462294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6386255739939959588, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+  m_PrefabInstance: {fileID: 1285462289}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1285462295 stripped
@@ -2451,9 +2467,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1285462295}
     - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: exitGameButton
+      value: 
+      objectReference: {fileID: 1285462294}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: pauseMenuPanel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
       propertyPath: bonusScore_Text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 904903416}
     - target: {fileID: 4032155701305084585, guid: 380562e05e5abaa4e946a51699f48269, type: 3}
       propertyPath: lpArray.Array.size
       value: 3

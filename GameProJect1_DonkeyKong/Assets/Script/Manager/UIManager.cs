@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using System;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,35 +14,48 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text bonusScore_Text;
     [SerializeField] TMP_Text level_Text;
     // [SerializeField] TMP_Text lp;//just for show live point
-    [SerializeField] GameObject[] lpArray; 
+    [SerializeField] GameObject[] lpArray;
     ScoreManager scoreManager;
     [Header("Main Menu UI")]
     [SerializeField] GameObject startBlinkingText;
     [SerializeField] TMP_Text topFiveScoreRank_Text;
-    [SerializeField][Range(0,100)] float blinkingTime;
+    [SerializeField][Range(0, 100)] float blinkingTime;
     [Header("Cut Scene")]
-    [SerializeField] GameObject[] kongUi; 
+    [SerializeField] GameObject[] kongUi;
     public bool canUpdateText = true;
-    bool isUIUpdate =false;
+    bool isUIUpdate = false;
+    [Header("Pause Menu")]
+    bool _pause = false;
+    [SerializeField] GameObject pauseMenuCanvas;
+    [SerializeField] Button exitGameButton;
 
-    private void Start() 
+    private void Start()
     {
-        if(GameObject.Find("ScoreManager") != null)
-            scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>(); 
-        if(startBlinkingText)
+        if (GameObject.Find("ScoreManager") != null)
+            scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        if (startBlinkingText)
             StartCoroutine(textBlinking(blinkingTime));
-        
+
+        exitGameButton.onClick.AddListener(ExitGameFunction);
     }
 
-    private void Update() 
+    private void Update()
     {
         updateText();
-        if(topFiveScoreRank_Text)
+        if (topFiveScoreRank_Text)
             showTopFive();
-        if(kongUi.Length > 0 && !isUIUpdate)
+        if (kongUi.Length > 0 && !isUIUpdate)
         {
             ScriptSceneManager.instance.kongImgUi(kongUi);
             isUIUpdate = !isUIUpdate;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            bool _active = !pauseMenuCanvas.activeSelf ? true : false; 
+            PauseGameFunction();
+            pauseMenuCanvas.SetActive(_active);
+
         }
     }
 
@@ -53,16 +67,16 @@ public class UIManager : MonoBehaviour
         string rankDis = "";
         string script = "";
         int inList = 0;
-        if(SaveAndLoadScore.instance.TopScoreSortList.Count.Equals(0))
+        if (SaveAndLoadScore.instance.TopScoreSortList.Count.Equals(0))
             return;
-            
-        if(SaveAndLoadScore.instance.TopScoreSortList.Count < 5)
+
+        if (SaveAndLoadScore.instance.TopScoreSortList.Count < 5)
             inList = SaveAndLoadScore.instance.TopScoreSortList.Count;
         else inList = 5;
 
-        for(int i = 0;i < inList;i++)
+        for (int i = 0; i < inList; i++)
         {
-            switch(rank)
+            switch (rank)
             {
                 case 1:
                     rankDis = "1st";
@@ -80,7 +94,7 @@ public class UIManager : MonoBehaviour
                     rankDis = "5th";
                     break;
             }
-            script += $"{rankDis} {SaveAndLoadScore.instance.TopScoreSortList[i]} \n" ;
+            script += $"{rankDis} {SaveAndLoadScore.instance.TopScoreSortList[i]} \n";
             rank++;
         }
         topFiveScoreRank_Text.text = script;
@@ -91,9 +105,9 @@ public class UIManager : MonoBehaviour
         var _diff = GameManager.instance.difficulty;
         int level;
 
-        switch(_diff)
+        switch (_diff)
         {
-            case GameManager.diff.one: 
+            case GameManager.diff.one:
                 level = 1;
                 return level;
             case GameManager.diff.two:
@@ -116,13 +130,13 @@ public class UIManager : MonoBehaviour
     {
         int level = checkDiff();
 
-        if(FindObjectOfType<CollectItem_Player>() && canUpdateText)
+        if (FindObjectOfType<CollectItem_Player>() && canUpdateText)
         {
             CollectItem_Player player = FindObjectOfType<CollectItem_Player>();
             int scoreSum = GameManager.instance.score + player.playerScore;
             score_Text.text = scoreSum.ToString();
         }
-        else if(!canUpdateText)
+        else if (!canUpdateText)
         {
             score_Text.text = GameManager.instance.score.ToString();
         }
@@ -130,14 +144,14 @@ public class UIManager : MonoBehaviour
             score_Text.text = GameManager.instance.score.ToString();
 
         topScore_Text.text = "HIGH SCORE \n" + GameManager.instance.topScore.ToString();
-        if(bonusScore_Text != null)
+        if (bonusScore_Text != null)
             bonusScore_Text.text = scoreManager._CurrentBonusScore.ToString();
-        
+
         level_Text.text = "L = " + level.ToString();
 
-        if(lpArray != null)
+        if (lpArray != null)
             imageLP();
-        if(kongUi != null)
+        if (kongUi != null)
             imageKong();
         // lp.text = GameManager.instance._LP.ToString();
     }
@@ -146,11 +160,11 @@ public class UIManager : MonoBehaviour
     private void imageKong()
     {
         // if player died then only open image by previousScene else active image by nextScene
-        string scene = GameManager.instance.state == GameManager._state.lose? ScriptSceneManager.instance.previousScene : ScriptSceneManager.instance.nextScene;
+        string scene = GameManager.instance.state == GameManager._state.lose ? ScriptSceneManager.instance.previousScene : ScriptSceneManager.instance.nextScene;
         int sceneNum = Convert.ToInt32(scene);
         // Debug.Log(sceneNum);
 
-        switch(GameManager.instance.difficulty)
+        switch (GameManager.instance.difficulty)
         {
             case GameManager.diff.one:
                 // for(int i = sceneNum;i < kongUi.Length;i++)
@@ -167,14 +181,14 @@ public class UIManager : MonoBehaviour
 
     private void imageLP() //if player lose lp then image set active are false
     {
-        if(GameManager.instance._LP < lpArray.Length)
-            for(int i = GameManager.instance._LP;i < lpArray.Length;i++)
+        if (GameManager.instance._LP < lpArray.Length)
+            for (int i = GameManager.instance._LP; i < lpArray.Length; i++)
                 lpArray[i].SetActive(false);
     }
 
     IEnumerator textBlinking(float time)
     {
-        while(startBlinkingText)
+        while (startBlinkingText)
         {
             startBlinkingText.SetActive(false);
             yield return new WaitForSeconds(time);
@@ -183,5 +197,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    
+    public void PauseGameFunction()
+    {
+        if (!_pause)
+        {
+            _pause = true;
+            SoundManager.instance.PauseMusic();
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            _pause = false;
+            SoundManager.instance.ResumeMusic();
+            Time.timeScale = 1;
+        }
+    }
+
+    public void ExitGameFunction()
+    {
+        Debug.Log("ExitGame");
+        Application.Quit();
+    }
 }

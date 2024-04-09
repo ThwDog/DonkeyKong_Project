@@ -8,6 +8,16 @@ public class SoundManager : SingletonClass<SoundManager>
     public Sound[] musicSound, sfxSound;
     public AudioSource musicSource, sfxSource;   
 
+    public void PauseMusic()
+    {
+        musicSource.Pause();
+    }
+
+    public void ResumeMusic()
+    {
+        musicSource.Play();
+    }
+
     public void PlayMusic(string nameSound)
     {
         Sound s = Array.Find(musicSound, x => x.nameSound == nameSound);

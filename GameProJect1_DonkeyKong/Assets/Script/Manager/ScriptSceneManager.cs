@@ -119,9 +119,17 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
             win = false;
             if (Input.anyKey)
             {
-                checkNextScene();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                GameManager.instance.state = GameManager._state.playing;
+                if(Input.GetKey(KeyCode.Escape) || Input.GetMouseButton(0) || Input.GetMouseButtonDown(1))
+                {
+                    Debug.Log("Cant Next");                   
+                    return;
+                }
+                else
+                {
+                    checkNextScene();
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    GameManager.instance.state = GameManager._state.playing;
+                }
                 //SceneManager.LoadScene("Level" + nextScene);    
             }
         }
@@ -130,19 +138,26 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
         {
             if (Input.anyKey)
             {
-                if (win)
+                if(Input.GetKey(KeyCode.Escape) || Input.GetMouseButton(0) || Input.GetMouseButtonDown(1))
                 {
-                    GameManager.instance.state = GameManager._state.win;
-                    toMainMenu();
+                    return;
                 }
                 else
                 {
-                    // if losing then load same scene else load next Scene
-                    string scene = GameManager.instance.state == GameManager._state.lose? previousScene : nextScene;
-                    Debug.Log("LoadScene " + scene);
-                    SceneManager.LoadScene("Level" + scene);
-                    GameManager.instance.state = GameManager._state.playing;
-                    checkNextScene();
+                    if (win)
+                    {
+                        GameManager.instance.state = GameManager._state.win;
+                        toMainMenu();
+                    }
+                    else
+                    {
+                        // if losing then load same scene else load next Scene
+                        string scene = GameManager.instance.state == GameManager._state.lose? previousScene : nextScene;
+                        Debug.Log("LoadScene " + scene);
+                        SceneManager.LoadScene("Level" + scene);
+                        GameManager.instance.state = GameManager._state.playing;
+                        checkNextScene();
+                    }
                 }
             }
         }
