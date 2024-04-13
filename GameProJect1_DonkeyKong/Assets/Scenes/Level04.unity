@@ -3625,8 +3625,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925153178}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -20.5, y: -26.9, z: 33.5}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 30.000002, y: -26.9, z: 33.5}
   m_LocalScale: {x: 41.641857, y: 41.641857, z: 41.641857}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3636,7 +3636,7 @@ Transform:
   - {fileID: 1247093599}
   m_Father: {fileID: 1046720681}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &925153180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3652,7 +3652,7 @@ MonoBehaviour:
   type: 2
   animationList:
   - AnimationName: Swim
-    howLongToPlay: 5
+    howLongToPlay: 15
   canPlay: 1
   speed: 0
   canMoveTo: 0
@@ -4808,6 +4808,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3454b2f5f92fa3543a4c3352a4804dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1075972567 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1907524418397717508, guid: 194aa7926f8af574da69229aeaf0c8d5, type: 3}
+  m_PrefabInstance: {fileID: 1075972565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1080130322
 GameObject:
   m_ObjectHideFlags: 0
@@ -6058,6 +6063,84 @@ MonoBehaviour:
   m_Bidirectional: 1
   m_AutoUpdatePosition: 0
   m_Area: 0
+--- !u!1001 &1336917157
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_RootOrder
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 32798297234869894, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299129053127059536, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_Name
+      value: FireWork
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299129053127059536, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085157018946596652, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085157018946596652, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 80
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+--- !u!1 &1336917158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4299129053127059536, guid: c783de8ac425a8e4b8388dedb90cc8e2, type: 3}
+  m_PrefabInstance: {fileID: 1336917157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1366474566
 GameObject:
   m_ObjectHideFlags: 0
@@ -8264,6 +8347,10 @@ PlayableDirector:
     value: {fileID: 1894923726}
   - key: {fileID: 4701605819477702771, guid: d23d5120f5d719f408e797d6a903a1d6, type: 2}
     value: {fileID: 2134088366}
+  - key: {fileID: -3789952720843421832, guid: d23d5120f5d719f408e797d6a903a1d6, type: 2}
+    value: {fileID: 1336917158}
+  - key: {fileID: 3819240245882704253, guid: d23d5120f5d719f408e797d6a903a1d6, type: 2}
+    value: {fileID: 1075972567}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1860341530
@@ -12581,7 +12668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4307290872290644929}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 25, y: -26.9, z: 33.5}
+  m_LocalPosition: {x: 13.8, y: -26.9, z: 33.5}
   m_LocalScale: {x: 41.641857, y: 41.641857, z: 41.641857}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13255,7 +13342,7 @@ MonoBehaviour:
   type: 2
   animationList:
   - AnimationName: Swim
-    howLongToPlay: 5
+    howLongToPlay: 10
   canPlay: 1
   speed: 0
   canMoveTo: 0

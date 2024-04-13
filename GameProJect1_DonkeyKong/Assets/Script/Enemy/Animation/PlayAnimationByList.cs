@@ -50,7 +50,7 @@ public class PlayAnimationByList : MonoBehaviour
             indexList = 0;
 
         anim.SetTrigger(animationList[indexList].AnimationName);
-        yield return new WaitForSeconds(animationList[indexList].howLongToPlay);
+        yield return new WaitForSecondsRealtime(animationList[indexList].howLongToPlay);
         indexList++;
         StartCoroutine(playAnimation());
     }

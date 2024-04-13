@@ -813,6 +813,11 @@ MonoBehaviour:
   m_Bidirectional: 1
   m_AutoUpdatePosition: 0
   m_Area: 0
+--- !u!95 &733996367 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1907524418397717508, guid: 194aa7926f8af574da69229aeaf0c8d5, type: 3}
+  m_PrefabInstance: {fileID: 2018918834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &736636050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1038,8 @@ PlayableDirector:
     value: {fileID: 1172232060}
   - key: {fileID: -5363228467416423541, guid: 5f22c3e3d62401a41b336c7bcdf57e61, type: 2}
     value: {fileID: 919132147792619382}
+  - key: {fileID: -1530822031609960184, guid: 5f22c3e3d62401a41b336c7bcdf57e61, type: 2}
+    value: {fileID: 733996367}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &994460895

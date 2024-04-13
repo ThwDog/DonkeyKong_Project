@@ -28,6 +28,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
     [SerializeField][Range(-10.0f,10.0f)]float input_Delay;
     private bool canJump = true;
     private bool isClimbing = false;
+    private bool finishClimbing = false;
     [HideInInspector]public bool canClimbing = true;
     [SerializeField]private bool isLadder = false;
     [SerializeField]private bool isLadderDown = false;
@@ -105,6 +106,11 @@ public class PlayerControl : MonoBehaviour , IDamageable
             anim.speed = 0;
         else anim.speed = 1;
         
+        if(!isClimbing && isLadderDown && finishClimbing && !isLadder)
+        {
+            anim.SetTrigger("FinishClimb");
+            finishClimbing = !finishClimbing;
+        }
 
         checkGround();
         move();
@@ -121,7 +127,10 @@ public class PlayerControl : MonoBehaviour , IDamageable
     private void move()
     {   
         if(isLadder && inputCon.movement.y > 0f && canClimbing)
+        {
             isClimbing = true;
+            finishClimbing = true;
+        }
         if(!isLadderDown || !isLadder || isLadder & isGrounded)
         {
             if(inputCon.movement.x != 0 && canWalk && isGrounded)

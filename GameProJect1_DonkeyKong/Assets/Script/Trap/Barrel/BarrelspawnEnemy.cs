@@ -8,6 +8,7 @@ public class BarrelspawnEnemy : SpawnPointScript
     [Header("Barrel Spawn")]
     [SerializeField] private LayerMask layerMask01;
     [SerializeField] private LayerMask layerMask02;
+    [SerializeField] private GameObject fire;
 
     void OnCollisionEnter(Collision other)
     {
@@ -18,6 +19,7 @@ public class BarrelspawnEnemy : SpawnPointScript
         // if(objHitToSpawn.CompareTag("Enemy") && objHitToSpawn.layer == 9 || objHitToSpawn.CompareTag("Enemy") && objHitToSpawn.layer == 11) 
         if (objHitToSpawn.CompareTag("Enemy") && hitLayerMask == layerMask01 || objHitToSpawn.CompareTag("Enemy") && hitLayerMask == layerMask02)
         {
+            fire.SetActive(true);
             spawnEnemy(spawnObj,gameObject);
             Destroy(objHitToSpawn);
         }
