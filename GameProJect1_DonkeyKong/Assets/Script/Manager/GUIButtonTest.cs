@@ -23,7 +23,7 @@ public class GUIButtonTest : MonoBehaviour
 
     void OnGUI() 
     {
-        GUILayout.BeginArea(new Rect(450,950,200,150));
+        GUILayout.BeginArea(new Rect(400,925,200,150));
         if(ShowGui)
         {
             if (GUILayout.Button("Win"))

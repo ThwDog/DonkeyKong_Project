@@ -173,7 +173,7 @@ Transform:
   - {fileID: 896478053066144446}
   - {fileID: 3638210268571178138}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7708967108233619591
 Animator:
@@ -210,12 +210,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   animationList:
-  - AnimationName: HeadTurn
-    howLongToPlay: 6
   - AnimationName: Help
-    howLongToPlay: 1
+    howLongToPlay: 3
   canPlay: 1
   speed: 0
+  canMoveTo: 0
+  target: {fileID: 0}
+  moveToSpeed: 0
+  canMoveToward: 0
 --- !u!1 &285672342834807108
 GameObject:
   m_ObjectHideFlags: 0

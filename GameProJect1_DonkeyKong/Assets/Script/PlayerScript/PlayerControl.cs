@@ -331,6 +331,7 @@ public class PlayerControl : MonoBehaviour , IDamageable
     {
         //play animation dead use unscaled time
         Debug.Log("Dead");
+        SoundManager.instance.PlaySfx("Lose");
         transform.rotation = new Quaternion(0,180,0,0);// rote because animation should look like this
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(3.0f);//dead delay time
