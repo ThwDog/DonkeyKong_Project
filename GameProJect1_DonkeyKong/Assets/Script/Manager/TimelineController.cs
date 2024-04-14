@@ -9,6 +9,8 @@ public class TimelineController : MonoBehaviour
 {
     [SerializeField] PlayableDirector startCutScene; // play when awake
     [SerializeField] PlayableDirector endCutScene; //play when win 
+    [Header("For LVL 4 Only")]
+    [SerializeField] GameObject target;
 
     public void endedScene()
     {
@@ -58,5 +60,9 @@ public class TimelineController : MonoBehaviour
         SoundManager.instance.PlaySfx(sfxName);
     }
 
-    
+    public void TeleportObj(GameObject obj)
+    {
+        obj.transform.position = target.transform.position;
+        obj.transform.rotation = target.transform.rotation;
+    }
 }
