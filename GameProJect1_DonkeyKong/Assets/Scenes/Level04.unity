@@ -1731,6 +1731,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -366.06763
       objectReference: {fileID: 0}
+    - target: {fileID: 1041798772463390952, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.24313727
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041798772463390952, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.9960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041798772463390952, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.9960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041798772463390952, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4282318590
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169389301540965530, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169389301540965530, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169389301540965530, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.91564035
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169389301540965530, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255593
+      objectReference: {fileID: 0}
     - target: {fileID: 2263871825160442502, guid: 54bc256eaea816341b6e58ba3b2032ae, type: 3}
       propertyPath: m_Name
       value: Canvas

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class OilBarrelSpawnEnemyLvl3 : SpawnPointScript
@@ -7,6 +8,8 @@ public class OilBarrelSpawnEnemyLvl3 : SpawnPointScript
     [SerializeField] int maximumSpawn;
     [SerializeField] List<EnemyHolder> enemyCount;
     [SerializeField] GameObject spawnPosRight ,spawnPosLeft;
+    [Header("VFX")]
+    [SerializeField] GameObject smokeVfx;
 
     private void Start() 
     {
@@ -61,6 +64,8 @@ public class OilBarrelSpawnEnemyLvl3 : SpawnPointScript
         }
         if(other.GetComponent<FoodTrayScript>())
         {
+            if(!smokeVfx.activeSelf)
+                StartCoroutine(openVfx());
             Destroy(other.gameObject);
         }
     }
@@ -69,6 +74,14 @@ public class OilBarrelSpawnEnemyLvl3 : SpawnPointScript
     {
         spawnEnemy(spawnObj,spawnPosRight);
         yield return new WaitForSecondsRealtime(1.5f);
+    }
+
+    IEnumerator openVfx()
+    {
+        smokeVfx.SetActive(true);
+        yield return new WaitForSecondsRealtime(1f);
+        smokeVfx.SetActive(false);
+        yield break;
     }
 
 }

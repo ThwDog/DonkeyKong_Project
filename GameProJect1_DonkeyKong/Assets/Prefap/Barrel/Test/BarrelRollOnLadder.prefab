@@ -121,6 +121,7 @@ MonoBehaviour:
   roteSpeed: 100
   hitPlayer: 0
   ladderCollider: []
+  VfxScriptObjName: BumbPartical
 --- !u!136 &4224673980124594097
 CapsuleCollider:
   m_ObjectHideFlags: 0

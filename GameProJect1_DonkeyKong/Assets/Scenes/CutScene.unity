@@ -451,8 +451,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: HOW HIGH YOU CAN GET ?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9fe3a6519815034498b08f1a92d61eaf, type: 2}
+  m_sharedMaterial: {fileID: -4920220599668910144, guid: 9fe3a6519815034498b08f1a92d61eaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -14,8 +14,7 @@ public class BarrelHolder : MonoBehaviour , IDamageable
     private bool playerHaveCross = false; 
     public int score = 100;
     UIPopUpScore popUpScoreUI;
-
-
+    
     private void Start() 
     {
         popUpScoreUI = FindAnyObjectByType<UIPopUpScore>();

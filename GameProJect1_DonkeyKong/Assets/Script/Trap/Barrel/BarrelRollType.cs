@@ -21,12 +21,19 @@ public class BarrelRollType : MonoBehaviour
     private bool canClimbing;
     private bool isBaseGround = false;
     private Collider _collider;
+    [Header("VFX")]
+    VFXScript vfx;
+    [SerializeField] string VfxScriptObjName;
+    bool isGrounded;
+    bool onAir;
 
     private void Start() 
     {
         _collider = GetComponent<Collider>();
         //_collider.material.bounceCombine = PhysicMaterialCombine.Minimum;
         rb = GetComponent<Rigidbody>();    
+
+        vfx = GameObject.Find(VfxScriptObjName).GetComponent<VFXScript>();
     }
 
     private void Update() 
@@ -43,6 +50,14 @@ public class BarrelRollType : MonoBehaviour
                 playerAbove = true;
             } 
         }    
+
+        if(!isGrounded)
+            onAir = true;
+        if(isGrounded && onAir)
+        {
+            vfx.playParticle(gameObject.transform,new Vector3(0,-3.5f,0));
+            onAir = false;
+        }
     }
 
     public void _NormalRoll(float speed)
@@ -212,6 +227,9 @@ public class BarrelRollType : MonoBehaviour
         {
             isBaseGround = true;
         }
+        if(other.gameObject.layer == 8 || other.gameObject.layer == 6)
+            isGrounded = true;
+        else isGrounded = false;
     }
     
     void barrelRolling(float speed)
