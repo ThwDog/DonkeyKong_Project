@@ -8,7 +8,7 @@ public class SpringScript : MonoBehaviour
     [Tooltip("For spring bounce animation")]
     [SerializeField] Animator springAnim; // for spring bounce animation
     [Header("")]
-    [Range(1,10)]public float animationSpeed;
+    [Range(-10,10)]public float animationSpeed;
     [SerializeField]private bool _activate;
     public bool activate
     {
