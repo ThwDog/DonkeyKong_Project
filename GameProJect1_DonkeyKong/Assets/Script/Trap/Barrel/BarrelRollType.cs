@@ -55,7 +55,7 @@ public class BarrelRollType : MonoBehaviour
             onAir = true;
         if(isGrounded && onAir)
         {
-            vfx.playParticle(gameObject.transform,new Vector3(0,-3.5f,0));
+            vfx.playParticle(gameObject.transform,new Vector3(0,-3.5f,0.5f));
             onAir = false;
         }
     }
