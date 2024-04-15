@@ -4863,7 +4863,7 @@ Transform:
   - {fileID: 8308638484417646588}
   - {fileID: 4527487084136508396}
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &4307624142831486037
 ParticleSystem:
@@ -9672,7 +9672,7 @@ GameObject:
   - component: {fileID: 3336091001714428256}
   - component: {fileID: 6145623960723553854}
   m_Layer: 0
-  m_Name: fire
+  m_Name: fire_Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14775,8 +14775,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.3
-      minScalar: 0.1
+      scalar: 0.4
+      minScalar: 0.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
