@@ -119,7 +119,7 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
             win = false;
             if (Input.anyKey)
             {
-                if(Input.GetKey(KeyCode.Escape) || Input.GetMouseButton(0) || Input.GetMouseButtonDown(1))
+                if(Input.GetKey(KeyCode.Escape) || Input.GetMouseButton(0) || Input.GetMouseButtonDown(1) || Input.GetKey(KeyCode.F1))
                 {
                     Debug.Log("Cant Next");                   
                     return;
@@ -138,7 +138,7 @@ public class ScriptSceneManager : SingletonClass<ScriptSceneManager>
         {
             if (Input.anyKey)
             {
-                if(Input.GetKey(KeyCode.Escape) || Input.GetMouseButton(0) || Input.GetMouseButtonDown(1))
+                if(Input.GetKey(KeyCode.Escape) || Input.GetMouseButton(0) || Input.GetMouseButtonDown(1)|| Input.GetKey(KeyCode.F1))
                 {
                     return;
                 }
